@@ -47,7 +47,6 @@ export const MainContextProvider = ({children}) => {
 
       if(!token){
         setUser(null); // mark as logged out
-        setLoading(false);
         return;
       }
       

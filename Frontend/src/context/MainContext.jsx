@@ -11,7 +11,7 @@ export const useMainContext=()=>useContext(mainContext)
 export const MainContextProvider = ({children}) => {
 
   const[loading,setLoading]=useState(false)
-  const [user,setUser]=useState(null)
+  const [user,setUser]=useState(undefined)
   const [tasks,setTasks]=useState([])
   const navigate=useNavigate();
 
@@ -43,10 +43,12 @@ export const MainContextProvider = ({children}) => {
       
       setLoading(true)
 
-      const token=localStorage.getItem('user') || ''
+      const token=localStorage.getItem('user');
 
       if(!token){
-        return
+        setUser(null); // mark as logged out
+        setLoading(false);
+        return;
       }
       
       const response = await axiosClient.get("/profile",{
@@ -61,7 +63,7 @@ export const MainContextProvider = ({children}) => {
       await fetchAllTasks()
 
     } catch (error) {
-        console.log(error)  
+        setUser(null)
     }finally{
       setLoading(false)
     }

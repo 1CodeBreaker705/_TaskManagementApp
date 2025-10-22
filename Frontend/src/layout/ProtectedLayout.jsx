@@ -11,7 +11,7 @@ const ProtectedLayout = () => {
   const [loading,setLoading]=useState(true)
 
   useEffect(()=>{
-     if (user === null) return; 
+     if (user === undefined) return; 
      if(!user){
       navigate('/login')
     }else{

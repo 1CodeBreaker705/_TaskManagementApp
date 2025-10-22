@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const axiosClient=axios.create({
-  baseURL:'http://localhost:4500/api/v1'
+  baseURL:'https://taskmanagementapp-orr1.onrender.com/api/v1'
 })

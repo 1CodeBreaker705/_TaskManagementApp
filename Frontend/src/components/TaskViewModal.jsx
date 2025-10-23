@@ -51,7 +51,7 @@ const TaskViewModal = ({id}) => {
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-2xl rounded-xl bg-[#f8ed1f] border shadow p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+              className="w-full max-w-2xl rounded-xl bg-[#FFF49B] border shadow p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
             >
               <DialogTitle as="div" className="text-base/7 font-medium text-black flex items-center justify-between">
                 <h3 className='flex items-center justify-center gap-x-2 lg:gap-x-3 '>

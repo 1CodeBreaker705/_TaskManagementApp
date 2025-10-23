@@ -4,6 +4,13 @@ const router=express.Router()
 const mongoose=require('mongoose')
 const { TaskModel } = require("./models/task.model")
 
+
+//ping route for uptime robot to check server is up or not
+router.route("/ping").get((req,res)=>{
+  res.status(200).send({message:"pong ✅ Backend is alive"});
+});
+
+
 //register user
 router.route('/register')
 .post(async(req,res)=>{
@@ -218,15 +225,6 @@ router.route('/task/:id')
   }
 })
 
-//ping route for uptime robot to check server is up or not
-router.route('/ping')
-.get((req, res) => {
-  try {
-    res.status(200).send({ message: "pong ✅ Backend is working" });
-  } catch (error) {
-    res.status(500).send({ error: error.message });
-  }
-});
 
 
 module.exports=router

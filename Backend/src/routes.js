@@ -219,8 +219,13 @@ router.route('/task/:id')
 })
 
 //ping route for uptime robot to check server is up or not
-app.get("/ping", (req,res)=>{
-  res.status(200).send("pong");
+router.route('/ping')
+.get((req, res) => {
+  try {
+    res.status(200).send({ message: "pong ✅ Backend is working" });
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
 });
 
 

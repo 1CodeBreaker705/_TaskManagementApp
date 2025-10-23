@@ -38,7 +38,7 @@ const TaskView = ({data,close}) => {
 
   return (
     <>
-      <h3 className=' text-sm lg:text-xl font-bold text-black mb-3 w-full break-words'>{data.title}</h3>
+      <h3 className=' text-base lg:text-xl font-bold text-black mb-3 w-full break-words'>{data.title}</h3>
       <p className=' text-sm lg:text-lg font-semi-bold text-zinc-700 mb-3 w-full break-words'>{data.description}</p>
       <p className='mb-5 text-sm'>Category:   <span className={`${categoryClass}`}>{data.category}</span></p>
       <p className='mb-3 text-sm'>Status:  <span className='text-xs lg:sm px-2 py-1 lg:px-3 lg:py-1.5 rounded-full font-medium bg-gray-100 text-gray-700 border border-gray-300 shadow-sm '>{data.status}</span></p>

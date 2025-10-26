@@ -51,7 +51,7 @@ const Dashboard = () => {
             onChange={(e) => setPriorityFilter(e.target.value)}
             className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200"
           >
-            <option value="All">Priority</option>
+            <option value="All">All Priority</option>
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
@@ -74,7 +74,7 @@ const Dashboard = () => {
           onChange={(e) => setStatusFilter(e.target.value)}
           className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200"
         >
-          <option value="All">Status</option>
+          <option value="All">All Status</option>
           <option value="Completed">Completed</option>
           <option value="Active">Active</option>
           <option value="Pending">Pending</option>

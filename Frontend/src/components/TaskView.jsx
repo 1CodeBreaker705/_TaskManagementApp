@@ -5,6 +5,7 @@ import { CgSpinner } from "react-icons/cg";
 import { axiosClient } from '../utils/axiosClient';
 import { toast } from 'react-toastify';
 import { useMainContext } from '../context/MainContext';
+import "react-quill-new/dist/quill.snow.css";
 
 const TaskView = ({data,close}) => {
   const categoryClass=taskCategories[data.category]

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaTasks, FaRegChartBar,  } from 'react-icons/fa';
-import websitePhoto from '../assets/website-photo.png';
+import websitePhoto from '../assets/Taskin.png';
 import { FaUser } from "react-icons/fa";
 const LandingPage = () => {
 

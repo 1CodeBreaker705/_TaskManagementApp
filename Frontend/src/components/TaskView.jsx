@@ -5,6 +5,7 @@ import { CgSpinner } from "react-icons/cg";
 import { axiosClient } from '../utils/axiosClient';
 import { toast } from 'react-toastify';
 import { useMainContext } from '../context/MainContext';
+import ReactQuill from 'react-quill-new';
 import "react-quill-new/dist/quill.snow.css";
 
 const TaskView = ({data,close}) => {
@@ -55,7 +56,14 @@ const TaskView = ({data,close}) => {
         <div className='relative min-h-[40vh] p-2'>
           <div className="pb-16">
             <h3 className=' text-base lg:text-xl font-bold text-black mb-3 w-full break-words'>{data.title}</h3>
-            <p className=' text-sm lg:text-lg font-semi-bold text-zinc-700 mb-3 w-full break-words' dangerouslySetInnerHTML={{ __html: data.description }}></p>
+               <div className='mb-3'>
+                <ReactQuill
+                  value={data.description}
+                  readOnly={true}
+                  theme="bubble"
+                  className="bg-white"
+                />
+              </div>
             <p className='mb-5 text-sm'>Category:   <span className={`${categoryClass}`}>{data.category}</span></p>
             <p className='mb-3 text-sm'>Status:  <span className='text-xs lg:sm px-2 py-1 lg:px-3 lg:py-1.5 rounded-full font-medium bg-gray-100 text-gray-700 border border-gray-300 shadow-sm '>{data.status}</span></p> 
             <div className={`${getPriorityClass(data.priority)} text-center rounded text-xs lg:text-sm w-1/4 absolute bottom-4 left-0 right-0 ml-2 lg:ml-5`}>Priority: {data.priority}</div>

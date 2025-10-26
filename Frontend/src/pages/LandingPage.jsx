@@ -49,7 +49,7 @@ const LandingPage = () => {
           <div className="bg-white rounded shadow p-6 flex flex-col items-center text-center hover:scale-105 transform transition">
             <FaUser className="text-indigo-600 text-5xl mb-4"/>
             <h3 className="font-semibold text-xl mb-2">Sleek UI and Amazing User Experience</h3>
-            <p>Smooth and clean modern UI with powerful task searching,filtering based on priority,sorting tasks newest/oldest,dedicated ui to view task,edit task,and create task provides best user experience and enhances workflow  
+            <p>Smooth and clean modern UI with powerful task searching,filtering based on priority and status,sorting,dedicated ui to view task,edit task,and create task provides best user experience and enhances workflow  
             </p>
           </div>
         </div>

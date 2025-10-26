@@ -3,6 +3,7 @@ const { UserModel } = require("./models/user.model")
 const router=express.Router()
 const mongoose=require('mongoose')
 const { TaskModel } = require("./models/task.model")
+const bcrypt = require('bcrypt');
 
 
 //ping route for uptime robot to check server is up or not
@@ -38,10 +39,14 @@ router.route('/register')
       throw new Error("Account Already Exists")
     }
 
+    // Hash the password
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
     const user=await UserModel.create({
        name,
        email,
-       password
+       password: hashedPassword, // store hashed password
     })
 
    res.status(201).send({message:"User Registration Successful",token:user._id})
@@ -75,9 +80,9 @@ router.route('/login')
       throw new Error("Email Not Found")
     }
 
-    if(userExists.password!==password){
-      throw new Error("Wrong Password Entered")
-    }
+    // Compare password with hashed password
+    const isMatch = await bcrypt.compare(password, userExists.password);
+    if (!isMatch) throw new Error("Wrong Password Entered");
 
    res.status(200).send({message:"Login Successful",token:userExists._id})
 

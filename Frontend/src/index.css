@@ -66,4 +66,12 @@ body {
   margin: 0.5rem 0;
 }
 
+.quill-content li[data-list="bullet"] {
+  list-style-type: disc !important;
+}
+
+.quill-content li[data-list="ordered"] {
+  list-style-type: decimal !important;
+}
+
 

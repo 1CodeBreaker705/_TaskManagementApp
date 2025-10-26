@@ -67,9 +67,8 @@ const Dashboard = () => {
             <option value="Oldest">Oldest First</option>
             <option value="DueDate">Due Date</option>
           </select>
-      </div>
 
-       {/* Status Filter */}
+          {/* Status Filter */}
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
@@ -80,6 +79,10 @@ const Dashboard = () => {
           <option value="Active">Active</option>
           <option value="Pending">Pending</option>
         </select>
+            
+      </div>
+
+      
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3 w-[97%] lg:w-[80%] mx-auto py-10'>
        {

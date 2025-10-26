@@ -18,9 +18,14 @@ const Dashboard = () => {
     return matchesSearch && matchesPriority;
   })
   .sort((a, b) => {
-    if (sortOrder === 'Newest') return new Date(b.createdAt) - new Date(a.createdAt);
-    else return new Date(a.createdAt) - new Date(b.createdAt);
-  });
+  if (sortOrder === 'Newest') return new Date(b.createdAt) - new Date(a.createdAt);
+  if (sortOrder === 'Oldest') return new Date(a.createdAt) - new Date(b.createdAt);
+  if (sortOrder === 'DueDate') {
+    const dateA = a.dueDate ? new Date(a.dueDate) : Infinity; // tasks without due date go last
+    const dateB = b.dueDate ? new Date(b.dueDate) : Infinity;
+    return dateA - dateB; // closest due date on top
+  }
+});
 
 
   return (
@@ -58,6 +63,7 @@ const Dashboard = () => {
           >
             <option value="Newest">Newest First</option>
             <option value="Oldest">Oldest First</option>
+            <option value="DueDate">Due Date ↑(Closest First)</option>
           </select>
       </div>
 

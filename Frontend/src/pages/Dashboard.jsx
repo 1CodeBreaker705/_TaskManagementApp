@@ -15,7 +15,8 @@ const Dashboard = () => {
     const x = search.toLowerCase();
     const matchesSearch = task.title.toLowerCase().includes(x) || task.description.toLowerCase().includes(x);
     const matchesPriority = priorityFilter === 'All' || task.priority === priorityFilter;
-    return matchesSearch && matchesPriority;
+    const matchesStatus = statusFilter === 'All' || task.status === statusFilter;
+    return matchesSearch && matchesPriority && matchesStatus;
   })
   .sort((a, b) => {
   if (sortOrder === 'Newest') return new Date(b.createdAt) - new Date(a.createdAt);
@@ -65,6 +66,20 @@ const Dashboard = () => {
             <option value="Oldest">Oldest First</option>
             <option value="DueDate">Due Date</option>
           </select>
+      </div>
+
+       {/* Status Filter */}
+      <div className="mb-4 flex justify-center">
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+          className="py-2 px-4 bg-white border border-gray-300 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-200"
+        >
+          <option value="All">All Statuses</option>
+          <option value="Completed">Completed</option>
+          <option value="Active">Active</option>
+          <option value="Pending">Pending</option>
+        </select>
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3 w-[97%] lg:w-[80%] mx-auto py-10'>

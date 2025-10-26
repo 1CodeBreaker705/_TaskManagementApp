@@ -12,25 +12,16 @@ import AddTaskPage from "./pages/AddTaskPage";
 import LandingPage from "./pages/LandingPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import ScrollToTop from "./components/ScrollToTop"
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
  
-  
-
   return (
     <>
       <div className="min-h-screen flex flex-col">
       <BrowserRouter>
        <MainContextProvider>   
-       <ToastContainer  
-        toastStyle={{
-          background: '#4f46e5', // indigo background
-          color: 'white',         // text color
-        }}
-        progressStyle={{
-          background: '#818cf8'   // lighter indigo for progress bar
-        }} />  
+       <ToastContainer/>  
         <Navbar/>
         <main className="flex-1 pt-16 lg:pt-20">
         <Routes>

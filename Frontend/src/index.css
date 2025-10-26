@@ -8,9 +8,8 @@ body {
 }
 
 /* Change success toast from green to indigo blue */
-.Toastify__toast--success {
-  background: #4f46e5; /* indigo blue */
-  color: white;        /* keep text readable */
+.Toastify__toast.Toastify__toast--success {
+  background: #4f46e5 !important; /* indigo blue */
+  color: white !important;
 }
-
 

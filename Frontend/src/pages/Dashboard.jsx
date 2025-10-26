@@ -8,6 +8,7 @@ const Dashboard = () => {
   const {tasks}=useMainContext()
   const [search,setSearch]=useState('')
   const [priorityFilter, setPriorityFilter] = useState('All'); // All, High, Medium, Low
+  const [statusFilter, setStatusFilter] = useState('All'); // All, Completed, Active, Pending
   const [sortOrder, setSortOrder] = useState('Newest'); 
 
   const filterResults = tasks

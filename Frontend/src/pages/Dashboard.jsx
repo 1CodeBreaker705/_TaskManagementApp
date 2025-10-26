@@ -50,7 +50,7 @@ const Dashboard = () => {
             onChange={(e) => setPriorityFilter(e.target.value)}
             className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200"
           >
-            <option value="All">All Priorities</option>
+            <option value="All">Priority</option>
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
@@ -69,18 +69,16 @@ const Dashboard = () => {
       </div>
 
        {/* Status Filter */}
-      <div className="mb-4 flex justify-center">
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
           className="py-2 px-4 bg-white border border-gray-300 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all duration-200"
         >
-          <option value="All">All Statuses</option>
+          <option value="All">Status</option>
           <option value="Completed">Completed</option>
           <option value="Active">Active</option>
           <option value="Pending">Pending</option>
         </select>
-      </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3 w-[97%] lg:w-[80%] mx-auto py-10'>
        {

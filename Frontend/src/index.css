@@ -12,24 +12,58 @@ body {
   font-weight: 500; /* semi-bold */
   line-height: 1.5;
   margin-bottom: 1rem;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .quill-content h1 { font-size: 1.5rem; font-weight: bold; margin: 0.5rem 0; }
 .quill-content h2 { font-size: 1.25rem; font-weight: bold; margin: 0.5rem 0; }
 .quill-content h3 { font-size: 1.125rem; font-weight: 600; margin: 0.5rem 0; }
 
-.quill-content ol { list-style: decimal !important; margin-left: 1.5rem; margin-bottom: 0.5rem; }
-.quill-content ul { list-style: disc !important; margin-left: 1.5rem; margin-bottom: 0.5rem; }
-.quill-content li { margin-bottom: 0.25rem; color: inherit; }
-
-/* Fix for list items overflowing container */
-.quill-content li * {
-  display: inline !important;
-  white-space: normal !important;
-  word-break: break-word !important;
+.quill-content ol {
+  list-style-type: decimal !important;
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  max-width: 100%;
 }
 
-.quill-content blockquote { border-left: 4px solid #ccc; padding-left: 1rem; font-style: italic; margin: 0.5rem 0; }
-.quill-content pre { background: #f3f3f3; padding: 0.5rem; border-radius: 0.25rem; overflow-x: auto; margin: 0.5rem 0; }
+.quill-content ul {
+  list-style-type: disc !important;
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  max-width: 100%;
+}
+
+.quill-content li {
+  margin-bottom: 0.25rem;
+  color: inherit;
+  display: list-item !important;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.quill-content li p {
+  display: block;          /* inner p wraps correctly */
+  white-space: normal;
+  word-break: break-word;
+  margin: 0;               /* remove Quill default margin */
+}
+
+.quill-content blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.quill-content pre {
+  background: #f3f3f3;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
 
 

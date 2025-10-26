@@ -18,7 +18,7 @@ export const MainContextProvider = ({children}) => {
   const logoutHandler=()=>{
     localStorage.removeItem("user")
     toast.success("Logout Sucessfully")
-    navigate("/login")
+    navigate("/")
     setUser(null)
   }
 

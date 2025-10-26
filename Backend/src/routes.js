@@ -125,7 +125,7 @@ router.route('/add-task')
         throw new Error("Enter Payload")
       }  
       
-      const {title,description,category,status}=req.body
+      const {title,description,category,status,dueDate,priority}=req.body
      
       if(!title){
         throw new Error("Title is Required")
@@ -139,12 +139,17 @@ router.route('/add-task')
       if(!status){
         throw new Error("Status is Required")
       }
+      if(!priority){
+        throw new Error("Status is Required")
+      }
 
       await TaskModel.create({
         title,
         description,
         category,
         status,
+        dueDate,
+        priority,
         user:req.user
       })
 
@@ -184,7 +189,7 @@ router.route('/task/:id')
   try {
     const id=req.params.id
 
-    const {title,description,category,status}=req.body
+    const {title,description,category,status,dueDate,priority}=req.body
      
       if(!title){
         throw new Error("Title is Required")
@@ -198,12 +203,17 @@ router.route('/task/:id')
       if(!status){
         throw new Error("Status is Required")
       }
+      if(!priority){
+        throw new Error("Priority is Required")
+      }
 
       await TaskModel.findByIdAndUpdate(id,{
         title,
         description,
         category,
-        status
+        status,
+        dueDate,
+        priority
       })
 
       return res.status(200).send({message:"Task Updated"})

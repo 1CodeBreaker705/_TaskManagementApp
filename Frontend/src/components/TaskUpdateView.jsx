@@ -1,11 +1,13 @@
 import React, {  useState } from 'react'
 import * as yup from 'yup'
-import { taskCategories,statusList } from '../utils/constant'
+import { taskCategories,statusList,priorityList } from '../utils/constant'
 import { toast } from 'react-toastify'
 import { Formik,Form, Field, ErrorMessage } from 'formik'
 import CustomLoaderButton from '../components/CustomLoaderButton'
 import { axiosClient } from '../utils/axiosClient'
 import { useMainContext } from '../context/MainContext';
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 
 const TaskUpdateView = ({data,fetchData,close}) => {
 
@@ -20,14 +22,18 @@ const TaskUpdateView = ({data,fetchData,close}) => {
       title: data.title || '',
       description:data.description|| '',
       category:data.category || '',
-      status:data.status || ''
+      status:data.status || '',
+      dueDate:data.dueDate || '',
+      priority:data.priority || ''
   }
   
   const validationSchema=yup.object({
       title:yup.string().required("Title is required"),
       description:yup.string().required("Description is required"),
       category:yup.string().required("Category is required").oneOf(categories,"Choose valid category"),
-      status:yup.string().required("Status is required").oneOf(statusList,"Choose valid category")
+      status:yup.string().required("Status is required").oneOf(statusList,"Choose valid category"),
+      dueDate: yup.date().nullable().transform((curr, orig) => (orig === "" ? null : curr)).typeError("Invalid date"),
+      priority:yup.string().required("Priority is required").oneOf(priorityList,"Choose valid priority")
   })
 
   const onSubmitHandler=async(values,helpers)=>{
@@ -59,18 +65,23 @@ const TaskUpdateView = ({data,fetchData,close}) => {
      validationSchema={validationSchema}
      onSubmit={onSubmitHandler}
      >
-      <Form className=' bg-white mx-auto  px-3 rounded-lg'>
-        
+    {({values,setFieldValue})=>(
+      <Form className=' bg-gray-100 mx-auto  px-3 rounded-lg'>
         <div className='py-10 px-2'>
+          <div className='mb-3'>
+              <label htmlFor="">Due Date (Optional)</label>
+              <Field name='dueDate' type="date" className="w-full py-3 px-4 border rounded" placeholder="Select Due Date"  />
+               <ErrorMessage name='dueDate'  className='text-red-500 text-normal' component={'p'}/>
+           </div>
          <div className='mb-3'>
           <label htmlFor="">Title</label>
           <Field name='title' type="text" className="w-full py-3 px-4 border rounded" placeholder='Enter Task Title' />
           <ErrorMessage name='title'  className='text-red-500 text-normal' component={'p'}/>
          </div>
-         <div className='mb-3'>
-          <label htmlFor="">Description</label>
-          <Field as='textarea' name='description' type="text" className="w-full py-3 px-4 border rounded" placeholder='Define Task' />
-          <ErrorMessage name='description'  className='text-red-500 text-normal' component={'p'}/>
+         <div className="mb-3">
+            <label htmlFor="">Description</label>
+            <ReactQuill theme="snow" value={values.description} onChange={(val) => setFieldValue("description", val)} className="border rounded bg-white"/>
+            <ErrorMessage name="description" component="p" className="text-red-500 text-sm" />
          </div>
          <div className='mb-3'>
           <label htmlFor="">Categories</label>
@@ -96,11 +107,24 @@ const TaskUpdateView = ({data,fetchData,close}) => {
                       </Field>
                       <ErrorMessage name='status'  className='text-red-500 text-normal' component={'p'}/>
           </div>
-          <div className="mb-3">
+           <div className="mb-3">
+                      <label htmlFor="">Priority</label>
+                      <Field name='priority' as='select' className="w-full py-3 px-4 border rounded">
+                         <option value="">-----select-----</option>
+                         {
+                          priorityList.map((cur,i)=>{
+                            return <option key={i} value={cur}>{cur}</option>
+                          })
+                         }
+                      </Field>
+                      <ErrorMessage name='priority'  className='text-red-500 text-normal' component={'p'}/>
+           </div>
+          <div className="mt-6">
             <CustomLoaderButton isLoading={loading} text="Update Task"/> 
           </div>
         </div>
       </Form>
+      )}
      </Formik>
     </>
   )

@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <>
     <Link to='/' className='flex items-center gap-x-2 '>
-     <FaTasks className='text-3xl text-[#d0b831]'/>
+     <FaTasks className='text-3xl text-indigo-500'/>
      <span className='font-bold text-2xl'>Taskin</span>
     </Link>
     </>

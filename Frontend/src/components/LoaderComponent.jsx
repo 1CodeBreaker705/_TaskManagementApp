@@ -4,7 +4,7 @@ import { BeatLoader } from 'react-spinners'
 const LoaderComponent = () => {
   return (
     <>
-    <BeatLoader color="rgba(230, 200, 46, 0.99)" margin={10} size={15}/>
+    <BeatLoader color="rgba(63, 81, 181,0.99)" margin={10} size={15}/>
     </>
   )
 }

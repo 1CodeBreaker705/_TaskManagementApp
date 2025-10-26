@@ -27,7 +27,7 @@ const RegisterPage = () => {
        localStorage.setItem("user",data.token)
        helpers.resetForm()
        await fetchProfile()
-       navigate("/")
+       navigate("/dashboard")
     } catch (error) {
        toast.error(error?.response?.data?.error||error.message)
     }finally{

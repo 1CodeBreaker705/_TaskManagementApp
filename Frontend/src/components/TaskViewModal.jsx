@@ -45,22 +45,23 @@ const TaskViewModal = ({id}) => {
 
   return (
     <>
-    <button onClick={open} className='px-3 py-1 text-white bg-indigo-500 rounded-full flex items-center justify-center gap-x-1 cursor-pointer'>View<span><IoMdOpen></IoMdOpen></span></button>
-     <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none " onClose={close}>
+    <button onClick={open} className='px-3 py-1 text-white bg-indigo-500 rounded-full flex items-center justify-center gap-x-1 cursor-pointer border border-transparent hover:bg-indigo-100 hover:text-indigo-500 hover:border-indigo-500 transition-all transform duration-300 hover:scale-105'>View<span><IoMdOpen></IoMdOpen></span></button>
+     <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none " onClose={close}>
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-[4px] z-10" />
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-2xl rounded-xl bg-[#F5C30A] border shadow p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+              className="w-full max-w-2xl rounded-xl bg-indigo-500 border border-gray-500 shadow-xl p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
             >
-              <DialogTitle as="div" className="text-base/7 font-medium text-black flex items-center justify-between">
+              <DialogTitle as="div" className="text-base/7 font-medium text-white flex items-center justify-between">
                 <h3 className='flex items-center justify-center gap-x-2 lg:gap-x-3 '>
                   <span className='text-xs lg:text-lg'>Task {isUpdating?'Edit':'Details'}</span>
                 </h3>
-                <button onClick={()=>setIsUpdating(!isUpdating)} title='update' className=' text-xs lg:text-lg flex items-center justify-center gap-x-2 mr-15 cursor-pointer border rounded px-1 ml-4' >
+                <button onClick={()=>setIsUpdating(!isUpdating)} title='update' className=' text-xs lg:text-lg flex items-center justify-center gap-x-2 mr-15 cursor-pointer border rounded px-1 ml-4 hover:bg-white hover:text-indigo-500 hover:shadow-md hover:border-white transition-all transform duration-300 hover:scale-105'>
                   <span className='text-xs lg:text-lg'>{isUpdating?'Show Details':'Update'}</span>{isUpdating?<FaEye/>:<CiEdit/>}
                 </button>
-                <button onClick={close} className='text-xl p-1 bg-black rounded-full text-white'><IoMdClose/></button>
+                <button onClick={close} className='text-xl p-1 bg-white rounded-full text-black transform transition duration-300 hover:scale-110 '><IoMdClose/></button>
               </DialogTitle>
               {loading?<>
                <div className=' w-full min-h-[40vh] flex items-center justify-center'>

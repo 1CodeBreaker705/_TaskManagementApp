@@ -7,4 +7,5 @@ export const taskCategories = {
   "Others": "px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-600"
 }
 
-export const statusList=['New','Pending','Active','Completed','Cancelled']
+export const statusList=['Pending','Active','Completed']
+export const priorityList=['High','Medium','Low']

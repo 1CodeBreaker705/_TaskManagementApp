@@ -23,7 +23,7 @@ const AddTaskPage = () => {
       description:"",
       category:"",
       status:"",
-      priority:"",
+      priority:"Medium",
       dueDate:""
   }
   
@@ -110,7 +110,7 @@ const AddTaskPage = () => {
           <div className="mb-3">
             <label htmlFor="">Priority</label>
             <Field name='priority' as='select' className="w-full py-3 px-4 border rounded">
-               <option value="">-----select-----</option>
+               <option value="">-----select (default:Medium)-----</option>
                {
                 priorityList.map((cur,i)=>{
                   return <option key={i} value={cur}>{cur}</option>

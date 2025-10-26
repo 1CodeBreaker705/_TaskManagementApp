@@ -63,7 +63,7 @@ const Dashboard = () => {
           >
             <option value="Newest">Newest First</option>
             <option value="Oldest">Oldest First</option>
-            <option value="DueDate">Due Date ↑(Closest First)</option>
+            <option value="DueDate">Due Date</option>
           </select>
       </div>
 

@@ -48,7 +48,7 @@ const Dashboard = () => {
       `You have ${dueToday.length} task${dueToday.length > 1 ? "s" : ""} due today 🗓️`,
       {
         position: "top-right",
-        autoClose: 3500,
+        autoClose: 4000,
         hideProgressBar: false,
         closeOnClick: true,
       }

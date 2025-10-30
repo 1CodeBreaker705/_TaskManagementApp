@@ -45,7 +45,7 @@ const Dashboard = () => {
 
   if (dueToday.length > 0) {
     toast.info(
-      `You have ${dueToday.length} task${dueToday.length > 1 ? "s" : ""} due today 📅`,
+      `You have ${dueToday.length} task${dueToday.length > 1 ? "s" : ""} due today 🗓️`,
       {
         position: "top-right",
         autoClose: 3500,

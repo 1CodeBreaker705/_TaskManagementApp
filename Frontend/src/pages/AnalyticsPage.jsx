@@ -14,15 +14,18 @@ const AnalyticsPage = () => {
   const mediumPriority = tasks.filter((t) => t.priority === "Medium").length;
   const lowPriority = tasks.filter((t) => t.priority === "Low").length;
 
-  // Priority counts
+  // Category counts
   const studyPriority = tasks.filter((t) => t.category === "Study").length;
   const professionalPriority = tasks.filter((t) => t.category === "Professional").length;
   const healthPriority = tasks.filter((t) => t.category === "Health").length;
   const personalPriority = tasks.filter((t) => t.category === "Personal").length;
   const socialPriority = tasks.filter((t) => t.category === "social").length;
   const othersPriority = tasks.filter((t) => t.category === "others").length;
- 
 
+  //task completion rate
+   const completionRate = tasks.length === 0 ? 0 : Math.round((completedCount / tasks.length) * 100);
+  
+  //overdue count
   const overdueCount = tasks.filter(task => {
   if (!task.dueDate) return false;
   return new Date(task.dueDate) < new Date();
@@ -71,6 +74,21 @@ const AnalyticsPage = () => {
           <h2 className="font-semibold text-lg mb-3 text-indigo-500">Total Tasks</h2>
           <span className="text-4xl lg:text-5xl font-bold text-indigo-500">{tasks.length}</span>
         </div>
+
+        {/* Completion Rate */}
+        <div className="bg-white shadow-lg rounded-2xl p-4 flex flex-col justify-center items-center border-2 border-indigo-400">
+          <h2 className="font-semibold text-lg mb-3 text-green-500">Completion Rate</h2>
+          <div className="w-full bg-gray-200 rounded-full h-4">
+            <div
+              className="bg-green-500 h-4 rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${completionRate}%` }}
+            ></div>
+          </div>
+          <span className="mt-3 text-2xl font-bold text-green-600">
+            {completionRate}%
+          </span>
+        </div>
+
 
       </div>
     </div>

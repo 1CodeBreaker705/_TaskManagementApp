@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect  } from 'react'
 import TaskCard from '../components/TaskCard'
 import { BiSearchAlt } from "react-icons/bi";
 import { useMainContext } from '../context/MainContext';
+import { toast } from 'react-toastify';
 
 const Dashboard = () => {
 

@@ -78,9 +78,9 @@ const AnalyticsPage = () => {
         {/* Completion Rate */}
         <div className="bg-white shadow-lg rounded-2xl p-4 flex flex-col justify-center items-center border-2 border-indigo-400">
           <h2 className="font-semibold text-lg mb-3 text-green-500">Completion Rate</h2>
-          <div className="w-full bg-gray-200 rounded-full h-4">
+          <div className="w-full bg-gray-200 rounded-full h-4 border-2 border-indigo-400">
             <div
-              className="bg-green-500 h-4 shadow-sm rounded-full border border-indigo-400 transition-all duration-500 ease-out"
+              className="bg-green-500 h-4 shadow-sm rounded-full transition-all duration-500 ease-out"
               style={{ width: `${completionRate}%` }}
             ></div>
           </div>

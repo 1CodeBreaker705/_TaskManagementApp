@@ -29,6 +29,31 @@ const Dashboard = () => {
   }
 });
 
+  // ✅ Reminder Toast (due today)
+  useEffect(() => {
+  const today = new Date().toDateString();
+  const dueToday = tasks.filter(
+    (task) =>
+      task.dueDate &&
+      new Date(task.dueDate).toDateString() === today &&
+      task.status !== 'Completed'
+  );
+
+  if (dueToday.length > 0) {
+    toast.info(
+      dueToday.length === 1
+        ? `You have 1 task due today 📅`
+        : `You have ${dueToday.length} tasks due today 📅`,
+      {
+        position: 'top-right',
+        autoClose: 3000, // faster and smoother
+        hideProgressBar: false,
+        closeOnClick: true,
+      }
+    );
+  }
+}, [tasks]);
+
 
   return (
     <>

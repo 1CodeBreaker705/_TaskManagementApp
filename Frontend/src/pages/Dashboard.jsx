@@ -30,14 +30,18 @@ const Dashboard = () => {
   }
 });
 
-  // ✅ Reminder Toast (due today)
-  useEffect(() => {
+  // ✅ Reminder Toast (due today)only once per user session
+ const [shownToday, setShownToday] = useState(false);
+
+useEffect(() => {
+  if (shownToday) return; // avoid repeat notifications
+
   const today = new Date().toDateString();
   const dueToday = tasks.filter(
     (task) =>
       task.dueDate &&
       new Date(task.dueDate).toDateString() === today &&
-      task.status !== 'Completed'
+      task.status !== "Completed"
   );
 
   if (dueToday.length > 0) {
@@ -46,14 +50,15 @@ const Dashboard = () => {
         ? `You have 1 task due today 📅`
         : `You have ${dueToday.length} tasks due today 📅`,
       {
-        position: 'top-right',
-        autoClose: 3000, // faster and smoother
+        position: "top-right",
+        autoClose: 3500,
         hideProgressBar: false,
         closeOnClick: true,
       }
     );
+    setShownToday(true);
   }
-}, [tasks]);
+}, [tasks, shownToday]);
 
 
   return (

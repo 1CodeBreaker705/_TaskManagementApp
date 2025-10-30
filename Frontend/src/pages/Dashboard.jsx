@@ -31,10 +31,9 @@ const Dashboard = () => {
 });
 
   // ✅ Reminder Toast (due today)only once per user session
- const [shownToday, setShownToday] = useState(false);
-
-useEffect(() => {
-  if (shownToday) return; // avoid repeat notifications
+ useEffect(() => {
+  const shownToday = sessionStorage.getItem("shownToday");
+  if (shownToday) return; // stop if already shown this session
 
   const today = new Date().toDateString();
   const dueToday = tasks.filter(
@@ -46,9 +45,7 @@ useEffect(() => {
 
   if (dueToday.length > 0) {
     toast.info(
-      dueToday.length === 1
-        ? `You have 1 task due today 📅`
-        : `You have ${dueToday.length} tasks due today 📅`,
+      `You have ${dueToday.length} task${dueToday.length > 1 ? "s" : ""} due today 📅`,
       {
         position: "top-right",
         autoClose: 3500,
@@ -56,9 +53,10 @@ useEffect(() => {
         closeOnClick: true,
       }
     );
-    setShownToday(true);
+    sessionStorage.setItem("shownToday", "true"); // mark as shown
   }
-}, [tasks, shownToday]);
+}, [tasks]);
+
 
 
   return (

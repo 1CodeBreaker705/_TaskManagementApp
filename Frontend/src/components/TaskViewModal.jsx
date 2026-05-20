@@ -35,8 +35,8 @@ const TaskViewModal = ({id}) => {
   }
 
   async function open() {
-    await fetchData()
     setIsOpen(true)
+    fetchData()
   }
 
   function close() {

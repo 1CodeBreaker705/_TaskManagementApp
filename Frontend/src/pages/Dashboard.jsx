@@ -78,7 +78,7 @@ const Dashboard = () => {
           <select 
             value={priorityFilter}
             onChange={(e) => setPriorityFilter(e.target.value)}
-            className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200"
+            className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200 hover:cursor-pointer"
           >
             <option value="All">All Priority</option>
             <option value="High">High</option>
@@ -90,7 +90,7 @@ const Dashboard = () => {
           <select 
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
-            className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200"
+            className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200 hover:cursor-pointer"
           >
             <option value="Newest">Newest First</option>
             <option value="Oldest">Oldest First</option>
@@ -101,7 +101,7 @@ const Dashboard = () => {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200"
+          className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200 hover:cursor-pointer"
         >
           <option value="All">All Status</option>
           <option value="Completed">Completed</option>

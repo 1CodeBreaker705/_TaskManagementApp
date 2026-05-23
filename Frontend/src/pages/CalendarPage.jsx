@@ -19,7 +19,7 @@ const CalendarPage = () => {
         Calendar
       </h1>
 
-     <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg border border-indigo-300 p-6 flex justify-center">
+     <div className="w-fit mx-auto bg-white rounded-3xl shadow-xl border border-indigo-200 p-8">
 
         <Calendar
           value={selectedDate}

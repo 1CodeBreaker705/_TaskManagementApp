@@ -158,7 +158,7 @@ router.route('/add-task')
         user:req.user
       })
 
-      res.status(200).send({message:"Task Added"})
+      res.status(201).send({message:"Task Added"})
 
    } catch (error) {
      res.status(400).json({error:error.message})

@@ -40,8 +40,8 @@ const CalendarPage = () => {
             });
           
             return hasOverdue
-              ? "calendar-overdue"
-              : "calendar-due";
+                    ? `calendar-overdue overdue-${dayTasks.length}`
+                    : `calendar-due due-${dayTasks.length}`;
           }}
 
           tileContent={({date})=>{

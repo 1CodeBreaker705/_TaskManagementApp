@@ -86,6 +86,7 @@ body {
   padding:25px;
   background:white;
   box-shadow:0 8px 25px rgba(79,70,229,.15);
+  overflow:visible !important;
 }
 
 /* Navigation */
@@ -122,56 +123,36 @@ body {
   border-radius:14px;
   font-size:15px;
   transition:all .3s;
+  overflow:visible !important;
 }
 
-.react-calendar__tile:hover{
-  background:#eef2ff;
-  transform:scale(1.05);
-}
-
-/* Today */
-.react-calendar__tile--now{
-  background:#6366f1 !important;
-  color:white !important;
-  font-weight:700;
-  border-radius:14px;
-}
-
-.react-calendar__tile--now abbr{
-  color:white !important;
-}
-
-/* Selected */
-.react-calendar__tile--active{
-  background:#4f46e5 !important;
-  color:white !important;
-}
-
-.react-calendar__month-view__days__day--weekend{
-  color: inherit !important;
-}
-
-.react-calendar__month-view__days__day--weekend abbr{
-  color: inherit !important;
-}
-
-/* Allow tooltip to escape tile */
-.react-calendar{
-  overflow: visible !important;
-}
-
-.react-calendar__tile{
-  overflow: visible !important;
-}
-
-/* Keep selected day text white too */
-.react-calendar__tile--active abbr{
-  color:white !important;
-}
-
-/* Slightly smoother hover */
 .react-calendar__tile:hover{
   background:#eef2ff;
   transform:scale(1.05);
   z-index:5;
+}
+
+/* Today = lighter purple */
+.react-calendar__tile--now{
+  background:#ddd6fe !important;
+  font-weight:700;
+}
+
+.react-calendar__tile--now abbr{
+  color:#4f46e5 !important;
+}
+
+/* Selected = darker indigo */
+.react-calendar__tile--active{
+  background:#4f46e5 !important;
+}
+
+.react-calendar__tile--active abbr{
+  color:white !important;
+}
+
+/* Remove weekend red */
+.react-calendar__month-view__days__day--weekend,
+.react-calendar__month-view__days__day--weekend abbr{
+  color:inherit !important;
 }

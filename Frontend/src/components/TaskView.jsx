@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { taskCategories } from '../utils/constant';
 import { FaTrash } from 'react-icons/fa';
 import { CgSpinner } from "react-icons/cg";
 import { axiosClient } from '../utils/axiosClient';
@@ -42,7 +41,7 @@ const TaskView = ({data,close}) => {
           <div className="pb-16">
             <h3 className=' text-base lg:text-xl font-bold text-black mb-3 w-full break-words'>{data.title}</h3>
             <div className="quill-content mb-7 w-full lg:p-1" dangerouslySetInnerHTML={{ __html: data.description }}></div>
-             <div className="mt-6 text-sm text-gray-600 space-y-2 md:absolute md:bottom-16 md:right-4 md:text-right">
+             <div className="mt-6 text-sm text-gray-600 space-y-2 md:absolute md:bottom-16 md:left-4 ">
               <p><span className="font-medium">Category:</span> {data.category}</p>
               <p><span className="font-medium">Status:</span> {data.status}</p>
               <p><span className="font-medium">Priority:</span> {data.priority}</p>

@@ -25,69 +25,72 @@ const CalendarPage = () => {
           value={selectedDate}
           onChange={setSelectedDate}
           tileClassName={({date}) => {
-            const dayTasks = tasks.filter(task =>
-              task.dueDate &&
-              new Date(task.dueDate).toDateString() === date.toDateString()
-            );
-          
-            if(dayTasks.length===0) return "";
-          
-            const hasOverdue = dayTasks.some(task => {
-              const due = new Date(task.dueDate);
-              due.setHours(0,0,0,0);
-          
-              return due < today && task.status !== "Completed";
-            });
-          
+                
+                  const dayTasks = tasks.filter(task =>
+                    task.dueDate &&
+                    new Date(task.dueDate).toDateString() ===
+                    date.toDateString()
+                  );
+                
+                  if(dayTasks.length===0) return "";
+                
+                  const hasOverdue = dayTasks.some(task=>{
+                    const due = new Date(task.dueDate);
+                    due.setHours(0,0,0,0);
+                
+                    return due < today &&
+                           task.status !== "Completed";
+                  });
+                
                   return hasOverdue
-                      ? `calendar-overdue`
-                      : `calendar-due`;
-          }}
+                    ? "calendar-overdue"
+                    : "calendar-due";
+                }}
 
-          tileContent={({date}) => {
-
-              const dayTasks = tasks.filter(task => {
-                if(!task.dueDate) return false;
-            
+                tileContent={({date})=>{
+              
+                const dayTasks = tasks.filter(task=>{
+                  if(!task.dueDate) return false;
+              
+                  return (
+                    new Date(task.dueDate).toDateString() ===
+                    date.toDateString()
+                  );
+                });
+              
+                if(dayTasks.length===0) return null;
+              
+                const hasOverdue = dayTasks.some(task=>{
+                  const due = new Date(task.dueDate);
+                  due.setHours(0,0,0,0);
+              
+                  return due < today &&
+                         task.status!=="Completed";
+                });
+              
                 return (
-                  new Date(task.dueDate).toDateString() ===
-                  date.toDateString()
-                );
-              });
-            
-              if(dayTasks.length===0) return null;
-            
-              const hasOverdue = dayTasks.some(task => {
-                const due = new Date(task.dueDate);
-                due.setHours(0,0,0,0);
-            
-                return due < today &&
-                       task.status !== "Completed";
-              });
-            
-              return (
-                <div
-                  data-tooltip={
-                    hasOverdue
+                  <div
+                    title={
+                      hasOverdue
                       ? `${dayTasks.length} overdue task${
                           dayTasks.length!==1 ? "s" : ""
                         }`
                       : `${dayTasks.length} task${
                           dayTasks.length!==1 ? "s" : ""
                         } due`
-                  }
-                  className="flex justify-center mt-1"
-                >
-                  <div
-                    className={`w-2 h-2 rounded-full ${
-                      hasOverdue
-                      ? "bg-red-500"
-                      : "bg-emerald-500"
-                    }`}
-                  />
-                </div>
-              );
-            }}
+                    }
+                    className="flex justify-center mt-1"
+                  >
+                    <div
+                      className={`w-2 h-2 rounded-full ${
+                        hasOverdue
+                        ? "bg-red-500"
+                        : "bg-emerald-500"
+                      }`}
+                    />
+                  </div>
+                );
+              }}
 
 
         />

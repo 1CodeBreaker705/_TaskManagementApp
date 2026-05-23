@@ -99,7 +99,7 @@ Before running locally:
 Open:
 
 ```bash
-Frontend/src/constant/axiosClient.js
+Frontend/src/utils/axiosClient.js
 ```
 
 Update the backend base URL:

@@ -37,20 +37,28 @@ const Navbar = () => {
                 Dashboard
               </Link>
             </li>
+             <li>
+              <Link
+                to="/add-task"
+                className="px-3 py-1 lg:px-4 lg:py-2 bg-indigo-600 text-white rounded-sm border border-transparent hover:border-indigo-500 hover:bg-indigo-100 hover:text-indigo-500 transition-all duration-300 cursor-pointer"
+              >
+               + Add Task
+              </Link>
+            </li>
+             <li>
+              <Link
+                to="/calendar"
+                className="px-3 py-1 lg:px-4 lg:py-2 bg-indigo-600 text-white rounded-sm border border-transparent hover:border-indigo-500 hover:bg-indigo-100 hover:text-indigo-500 transition-all duration-300 cursor-pointer"
+              >
+               Calendar
+              </Link>
+            </li>
             <li>
               <Link
                 to="/analytics"
                 className="px-3 py-1 lg:px-4 lg:py-2 rounded-sm bg-indigo-600 text-white border border-transparent hover:border-indigo-500 hover:bg-indigo-100 hover:text-indigo-500 transition-all duration-300 cursor-pointer"
               >
                 Analytics
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/add-task"
-                className="px-3 py-1 lg:px-4 lg:py-2 bg-indigo-600 text-white rounded-sm border border-transparent hover:border-indigo-500 hover:bg-indigo-100 hover:text-indigo-500 transition-all duration-300 cursor-pointer"
-              >
-               + Add Task
               </Link>
             </li>
             <li>
@@ -125,20 +133,29 @@ const Navbar = () => {
                   </li>
                    <li>
                     <Link
-                      to="/analytics"
-                      onClick={() => setOpen(false)}
-                      className="px-2 py-1 rounded bg-indigo-600 text-white transition-all border border-transparent  hover:bg-indigo-100 hover:text-indigo-500  hover:border-indigo-500"
-                    >
-                      Analytics
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       to="/add-task"
                       onClick={() => setOpen(false)}
                       className="px-2 py-1 rounded bg-indigo-600 text-white transition-all border border-transparent  hover:bg-indigo-100 hover:text-indigo-500  hover:border-indigo-500"
                     >
                       Add Task
+                    </Link>
+                  </li>
+                   <li>
+                    <Link
+                      to="/calendar"
+                      onClick={() => setOpen(false)}
+                      className="px-2 py-1 rounded bg-indigo-600 text-white transition-all border border-transparent  hover:bg-indigo-100 hover:text-indigo-500  hover:border-indigo-500"
+                    >
+                      Calendar
+                    </Link>
+                  </li>
+                   <li>
+                    <Link
+                      to="/analytics"
+                      onClick={() => setOpen(false)}
+                      className="px-2 py-1 rounded bg-indigo-600 text-white transition-all border border-transparent  hover:bg-indigo-100 hover:text-indigo-500  hover:border-indigo-500"
+                    >
+                      Analytics
                     </Link>
                   </li>
                   <li>

@@ -1,4 +1,4 @@
-# 🚀 Taskin - Personal Task Management App 
+#  Taskin - Personal Task Management App 
 
 Taskin is a full-stack productivity web application built with React, Node.js, Express, and MongoDB. It evolved from a simple multi-user task app into a more complete productivity platform with rich text support, analytics, reminders, advanced task organization, and an improved user experience.
 

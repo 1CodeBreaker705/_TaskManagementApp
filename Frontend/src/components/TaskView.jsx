@@ -42,22 +42,22 @@ const TaskView = ({data,close}) => {
             <h3 className=' text-base lg:text-xl font-bold text-black mb-3 w-full break-words'>{data.title}</h3>
             <div className="quill-content mb-7 w-full lg:p-1" dangerouslySetInnerHTML={{ __html: data.description }}></div>
                   {/* Left details */}
-                  <div className="mt-6 md:absolute md:bottom-8 md:left-4 text-sm text-gray-600 space-y-2">
-                    <p><span className="font-medium">Category:</span> {data.category}</p>
-                    <p><span className="font-medium">Status:</span> {data.status}</p>
-                    <p><span className="font-medium">Priority:</span> {data.priority}</p>
+                  <div className="mt-6 md:absolute md:bottom-8 md:left-4 text-xs md:text-sm text-gray-500 space-y-1">
+                    <p><span className="font-medium text-gray-600">Category:</span> {data.category}</p>
+                    <p><span className="font-medium text-gray-600">Status:</span> {data.status}</p>
+                    <p><span className="font-medium text-gray-600">Priority:</span> {data.priority}</p>
                   </div>
                   
                   {/* Right dates */}
-                  <div className="mt-6 md:absolute md:bottom-8 md:right-4 text-sm text-gray-600 space-y-2">
+                  <div className="mt-4 md:mt-6 md:absolute md:bottom-8 md:right-4 text-xs md:text-sm text-gray-500 space-y-1">
                     <p>
-                      <span className="font-medium">Created:</span>{" "}
+                      <span className="font-medium text-gray-600">Created:</span>{" "}
                       {new Date(data.createdAt).toLocaleDateString()}
                     </p>
                   
                     {data.dueDate && (
                       <p className="text-indigo-500">
-                        <span className="font-medium">Due:</span>{" "}
+                        <span className="font-medium text-gray-600">Due:</span>{" "}
                         {new Date(data.dueDate).toLocaleDateString()}
                       </p>
                     )}

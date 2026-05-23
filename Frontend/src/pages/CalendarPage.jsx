@@ -67,10 +67,12 @@ const CalendarPage = () => {
                                 
                                   <div
                                     className="
-                                      absolute left-1/2 -translate-x-1/2
-                                      bottom-4
+                                      absolute left-1/2 
+                                      -translate-x-1/2
+                                      -translate-y-full
+                                      bottom-6
                                       opacity-0 group-hover:opacity-100
-                                      transition-opacity duration-150
+                                      transition-all duration-150
                                       bg-gray-800 text-white
                                       text-[10px] px-2 py-1 rounded-md
                                       whitespace-nowrap

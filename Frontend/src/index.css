@@ -154,3 +154,24 @@ body {
 .react-calendar__month-view__days__day--weekend abbr{
   color: inherit !important;
 }
+
+/* Allow tooltip to escape tile */
+.react-calendar{
+  overflow: visible !important;
+}
+
+.react-calendar__tile{
+  overflow: visible !important;
+}
+
+/* Keep selected day text white too */
+.react-calendar__tile--active abbr{
+  color:white !important;
+}
+
+/* Slightly smoother hover */
+.react-calendar__tile:hover{
+  background:#eef2ff;
+  transform:scale(1.05);
+  z-index:5;
+}

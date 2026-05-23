@@ -131,9 +131,14 @@ body {
 
 /* Today */
 .react-calendar__tile--now{
-  background:#ddd6fe !important;
-  color:#4f46e5;
+  background:#6366f1 !important;
+  color:white !important;
   font-weight:700;
+  border-radius:14px;
+}
+
+.react-calendar__tile--now abbr{
+  color:white !important;
 }
 
 /* Selected */

@@ -35,6 +35,11 @@ Taskin is a full-stack productivity web application built with React, Node.js, E
 - Filter tasks based on:
   - Priority
   - Task status
+  - Task Category
+
+### Calendar
+- Calender to track all your due tasks and overdue tasks 
+- coloured dot badge on dates hover on them to see number of tasks 
 
 ### 📊 Analytics Dashboard
 Get a complete overview of productivity with:

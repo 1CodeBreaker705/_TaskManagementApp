@@ -22,7 +22,7 @@ const App = () => {
       <div className="min-h-screen flex flex-col">
       <BrowserRouter>
        <MainContextProvider>   
-       <ToastContainer/>  
+       <ToastContainer autoClose={2000} pauseOnHover={false}/>  
         <Navbar/>
         <main className="flex-1 pt-16 lg:pt-20">
         <Routes>

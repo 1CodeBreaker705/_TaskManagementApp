@@ -55,44 +55,49 @@ const CalendarPage = () => {
 
            return (
 
-                      <div className="peer flex justify-center mt-1">
-                                
-                                  <div
-                                    className={`w-2 h-2 rounded-full ${
-                                      hasOverdue
-                                      ? "bg-red-500"
-                                      : "bg-emerald-500"
-                                    }`}
-                                  />
-                                
-                                  <div
-                                    className="
-                                      absolute left-1/2 
-                                      -translate-x-1/2
-                                      -translate-y-full
-                                      bottom-7
-                                      opacity-0 peer-hover:opacity-100
-                                      transition-all duration-150
-                                      bg-gray-800 text-white
-                                      text-[10px] px-2 py-1 rounded-md
-                                      whitespace-nowrap
-                                      pointer-events-none
-                                      z-50 shadow-lg
-                                    "
-                                  >
-                                    {
-                                      hasOverdue
-                                      ? `${dayTasks.length} overdue task${
-                                          dayTasks.length!==1 ? "s" : ""
-                                        }`
-                                
-                                      : `${dayTasks.length} task${
-                                          dayTasks.length!==1 ? "s" : ""
-                                        } due`
-                                    }
-                                  </div>
-                                
-                                </div>
+
+  <div className="group relative flex justify-center mt-1">
+
+    <div
+      className={`w-2 h-2 rounded-full ${
+        hasOverdue
+        ? "bg-red-500"
+        : "bg-emerald-500"
+      }`}
+    />
+
+    <div
+      className="
+      absolute left-1/2
+      -translate-x-1/2
+      -translate-y-full
+      bottom-7
+      opacity-0
+      group-hover:opacity-100
+      transition-all duration-150
+      bg-gray-800 text-white
+      text-[10px]
+      px-2 py-1 rounded-md
+      whitespace-nowrap
+      pointer-events-none
+      z-50 shadow-lg
+    "
+    >
+      {
+        hasOverdue
+        ? `${dayTasks.length} overdue task${
+            dayTasks.length!==1 ? "s" : ""
+          }`
+
+        : `${dayTasks.length} task${
+            dayTasks.length!==1 ? "s" : ""
+          } due`
+      }
+    </div>
+
+  </div>
+
+
                 
                 );
 

@@ -41,27 +41,21 @@ const CalendarPage = () => {
     return map;
   }, [tasks, todayMidnightKey]);
 
-  // Custom DayButton wrapper
+  // Compute task data specifically for the selected day
+  const selectedDayData = useMemo(() => {
+    if (!selectedDate) return { due: 0, overdue: 0 };
+    return dateMap[selectedDate.toDateString()] || { due: 0, overdue: 0 };
+  }, [selectedDate, dateMap]);
+
+  // Custom DayButton wrapper (Hover tooltip title attribute removed)
   const customComponents = useMemo(() => ({
     DayButton: ({ day, modifiers, children, ...props }) => {
       const dateKey = day.date.toDateString();
       const data = dateMap[dateKey] || { due: 0, overdue: 0 };
 
-      // Tooltip logic
-      let tooltip = "No due tasks";
-      if (data.due > 0 && data.overdue > 0) {
-        tooltip = `${data.due} task${data.due > 1 ? "s" : ""} due • ${data.overdue} overdue task${data.overdue > 1 ? "s" : ""}`;
-      } else if (data.overdue > 0) {
-        tooltip = `${data.overdue} overdue task${data.overdue > 1 ? "s" : ""}`;
-      } else if (data.due > 0) {
-        tooltip = `${data.due} task${data.due > 1 ? "s" : ""} due`;
-      }
-
       return (
         <button 
           {...props} 
-          title={tooltip} 
-          // Replaced fixed square widths with responsive w-9 h-9 to w-11 h-11 targets
           className="
             relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex flex-col items-center justify-center transition-all font-medium
             text-slate-800 
@@ -90,14 +84,13 @@ const CalendarPage = () => {
     <div className="p-4 sm:p-6 lg:p-12 min-h-screen bg-slate-50/50 flex flex-col items-center justify-start antialiased">
       <div className="w-full max-w-md">
         
-        {/* FIX: Header layouts stack cleanly on mobile views, space out on screens >= sm */}
+        {/* Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-6 px-1 text-center sm:text-right">
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight text-center sm:text-left">
             Calendar
           </h1>
           
           <div className="flex flex-col items-center sm:items-end gap-1.5">
-            {/* Active Dot Badges */}
             <div className="flex items-center gap-4 text-xs font-semibold text-slate-600 bg-white border border-slate-100 px-3 py-1.5 rounded-xl shadow-sm">
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 block" />
@@ -109,9 +102,9 @@ const CalendarPage = () => {
               </div>
             </div>
             
-            {/* Instruction line */}
-            <span className="text-[11px] text-slate-400 font-medium tracking-wide sm:mr-1">
-              Hover to see number of tasks
+            {/* Updated instruction string */}
+            <span className="text-[11px] text-slate-400 font-medium tracking-wide sm:mr-1 block">
+              Select the date to see number of tasks
             </span>
           </div>
         </div>
@@ -134,18 +127,48 @@ const CalendarPage = () => {
               button_next: "h-8 w-8 bg-transparent p-0 opacity-60 hover:opacity-100 transition-all pointer-events-auto text-slate-700 flex items-center justify-center rounded-xl hover:bg-slate-100",
               weeks: "w-full border-collapse space-y-1",
               weekdays: "flex justify-between border-b border-slate-100/80 pb-2",
-              
-              // Responsive fluid matching columns layout widths
               weekday: "text-slate-400 w-9 sm:w-11 font-semibold text-[0.7rem] sm:text-[0.75rem] text-center uppercase tracking-widest first:text-rose-400/80 last:text-rose-400/80",
               week: "flex w-full mt-1.5 justify-between",
               day: "p-0 relative text-center focus-within:relative focus-within:z-20",
-              
               selected: "shadow-lg shadow-indigo-100 font-bold rounded-xl",
               today: "border-[2px] border-indigo-500 font-bold text-indigo-600 rounded-xl aria-selected:border-transparent",
               outside: "text-slate-300 opacity-40 select-none pointer-events-none"
             }}
           />
         </div>
+
+        {/* 
+          CONDITIONAL PANEL: Only renders if selected day has > 0 due or overdue tasks.
+          Normal dates will display completely blank beneath the calendar wrapper.
+        */}
+        {selectedDate && (selectedDayData.due > 0 || selectedDayData.overdue > 0) && (
+          <div className="mt-4 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm flex items-center justify-between transition-all duration-200 ease-out animate-fadeIn">
+            <div className="flex flex-col">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                Selected Date
+              </span>
+              <span className="text-sm font-bold text-slate-800 mt-0.5">
+                {selectedDate.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+              </span>
+            </div>
+
+            <div className="flex gap-3">
+              {selectedDayData.due > 0 && (
+                <div className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1.5 rounded-xl">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  <span>{selectedDayData.due} Due</span>
+                </div>
+              )}
+              {selectedDayData.overdue > 0 && (
+                <div className="flex items-center gap-1.5 bg-rose-50 text-rose-700 text-xs font-bold px-2.5 py-1.5 rounded-xl">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  <span>{selectedDayData.overdue} Overdue</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );

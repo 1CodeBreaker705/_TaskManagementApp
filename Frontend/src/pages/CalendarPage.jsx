@@ -89,23 +89,31 @@ const CalendarPage = () => {
     <div className="p-6 lg:p-12 min-h-screen bg-slate-50/50 flex flex-col items-center justify-start antialiased">
       <div className="w-full max-w-md">
         
-        {/* Top Header Section with Legend Items on Right Side */}
-        <div className="flex items-center justify-between mb-6 px-1">
-          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-            Calendar
-          </h1>
-          
-          <div className="flex items-center gap-4 text-xs font-semibold text-slate-600 bg-white border border-slate-100 px-3 py-1.5 rounded-xl shadow-sm">
-            <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 block" />
-              <span>Tasks Due</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-rose-500 block" />
-              <span>Overdue</span>
+                  {/* Top Header Section with Legend Items & Hover Instruction */}
+          <div className="flex items-start justify-between mb-6 px-1">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+              Calendar
+            </h1>
+            
+            <div className="flex flex-col items-end gap-1.5">
+              {/* Active Dot Badges */}
+              <div className="flex items-center gap-4 text-xs font-semibold text-slate-600 bg-white border border-slate-100 px-3 py-1.5 rounded-xl shadow-sm">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 block" />
+                  <span>Tasks Due</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-rose-500 block" />
+                  <span>Overdue</span>
+                </div>
+              </div>
+              
+              {/* Your New Instruction Line */}
+              <span className="text-[11px] text-slate-400 font-medium tracking-wide mr-1">
+                Hover to see number of tasks
+              </span>
             </div>
           </div>
-        </div>
 
         {/* Calendar Core Card wrapper */}
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-100/70 border border-slate-100 p-6 flex justify-center">

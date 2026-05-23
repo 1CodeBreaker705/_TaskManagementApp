@@ -145,7 +145,7 @@ router.route('/add-task')
         throw new Error("Status is Required")
       }
       if(!priority){
-        throw new Error("Status is Required")
+        throw new Error("Priority is Required")
       }
 
       await TaskModel.create({

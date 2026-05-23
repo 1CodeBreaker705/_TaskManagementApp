@@ -42,14 +42,17 @@ const TaskView = ({data,close}) => {
           <div className="pb-16">
             <h3 className=' text-base lg:text-xl font-bold text-black mb-3 w-full break-words'>{data.title}</h3>
             <div className="quill-content mb-7 w-full lg:p-1" dangerouslySetInnerHTML={{ __html: data.description }}></div>
-              <div className="text-sm text-gray-600 space-y-2 mt-6">
-              <p>Category: {data.category}</p>
-              <p>Status: {data.status}</p>
-              <p>Priority: {data.priority}</p>
-              <p>Created: {new Date(data.createdAt).toLocaleDateString()}</p>
-              {data.dueDate && (
-                <p className="text-indigo-500"> Due: {new Date(data.dueDate).toLocaleDateString()}</p>
-              )}
+             <div className="mt-6 text-sm text-gray-600 space-y-2 md:absolute md:bottom-16 md:right-4 md:text-right">
+              <p><span className="font-medium">Category:</span> {data.category}</p>
+              <p><span className="font-medium">Status:</span> {data.status}</p>
+              <p><span className="font-medium">Priority:</span> {data.priority}</p>
+              <p><span className="font-medium">Created:</span> {new Date(data.createdAt).toLocaleDateString()}</p>
+                {data.dueDate && (
+                  <p className="text-indigo-500">
+                    <span className="font-medium">Due:</span>{" "}
+                    {new Date(data.dueDate).toLocaleDateString()}
+                  </p>
+                )}
             </div>
           </div>
           <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center">  

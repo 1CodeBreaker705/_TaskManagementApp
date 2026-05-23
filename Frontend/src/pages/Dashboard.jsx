@@ -3,6 +3,8 @@ import TaskCard from '../components/TaskCard'
 import { BiSearchAlt } from "react-icons/bi";
 import { useMainContext } from '../context/MainContext';
 import { toast } from 'react-toastify';
+import Aos from "aos";
+import 'aos/dist/aos.css'; 
 
 const Dashboard = () => {
 

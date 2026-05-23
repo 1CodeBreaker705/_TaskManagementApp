@@ -7,13 +7,14 @@ const CalendarPage = () => {
   const { tasks } = useMainContext();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // 1. Fixed & stable primitive logic timestamp
+  // Stable timestamp for midnight today
   const todayMidnightKey = useMemo(() => {
     const d = new Date();
     d.setHours(0, 0, 0, 0);
     return d.getTime();
   }, []);
 
+  // Filter tasks excluding completed ones
   const dateMap = useMemo(() => {
     const map = {};
 
@@ -40,12 +41,13 @@ const CalendarPage = () => {
     return map;
   }, [tasks, todayMidnightKey]);
 
-  // 2. Custom DayButton component with fixed hover states
+  // Custom DayButton wrapper
   const customComponents = useMemo(() => ({
     DayButton: ({ day, modifiers, children, ...props }) => {
       const dateKey = day.date.toDateString();
       const data = dateMap[dateKey] || { due: 0, overdue: 0 };
 
+      // Tooltip logic
       let tooltip = "No due tasks";
       if (data.due > 0 && data.overdue > 0) {
         tooltip = `${data.due} task${data.due > 1 ? "s" : ""} due • ${data.overdue} overdue task${data.overdue > 1 ? "s" : ""}`;
@@ -59,20 +61,23 @@ const CalendarPage = () => {
         <button 
           {...props} 
           title={tooltip} 
-          /* 
-            FIX: Added text-slate-800, hover:text-indigo-900, and aria-selected:text-white 
-            to explicitly lock down the font colors during hover and selection states.
-          */
-          className="relative w-11 h-11 rounded-xl flex flex-col items-center justify-center transition-colors text-slate-800 hover:bg-indigo-50 hover:text-indigo-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 aria-selected:text-white aria-selected:hover:bg-indigo-600 aria-selected:hover:text-white"
+          className="
+            relative w-11 h-11 rounded-xl flex flex-col items-center justify-center transition-all font-medium
+            text-slate-800 
+            hover:bg-indigo-50 hover:text-black
+            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+            aria-selected:bg-indigo-600 aria-selected:text-white aria-selected:hover:bg-indigo-100 aria-selected:hover:text-black
+          "
         >
-          <span className="text-sm font-medium">{children}</span>
+          <span className="text-sm z-10">{children}</span>
           
-          <div className="absolute bottom-[4px] flex gap-[2px] justify-center items-center">
+          {/* Status dots placement */}
+          <div className="absolute bottom-[5px] flex gap-[3px] justify-center items-center z-10">
             {data.due > 0 && (
-              <div className="w-1 h-1 rounded-full bg-emerald-500" />
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-200" />
             )}
             {data.overdue > 0 && (
-              <div className="w-1 h-1 rounded-full bg-red-500" />
+              <div className="w-1.5 h-1.5 rounded-full bg-rose-500 shadow-sm shadow-rose-200" />
             )}
           </div>
         </button>
@@ -81,36 +86,56 @@ const CalendarPage = () => {
   }), [dateMap]);
 
   return (
-    <div className="p-6 lg:p-12 min-h-screen bg-slate-50">
-      <h1 className="text-2xl lg:text-4xl font-bold text-indigo-700 mb-8">
-        Calendar
-      </h1>
+    <div className="p-6 lg:p-12 min-h-screen bg-slate-50/50 flex flex-col items-center justify-start antialiased">
+      <div className="w-full max-w-md">
+        
+        {/* Top Header Section with Legend Items on Right Side */}
+        <div className="flex items-center justify-between mb-6 px-1">
+          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            Calendar
+          </h1>
+          
+          <div className="flex items-center gap-4 text-xs font-semibold text-slate-600 bg-white border border-slate-100 px-3 py-1.5 rounded-xl shadow-sm">
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 block" />
+              <span>Tasks Due</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-rose-500 block" />
+              <span>Overdue</span>
+            </div>
+          </div>
+        </div>
 
-      <div className="w-fit mx-auto bg-white rounded-3xl shadow-xl border border-indigo-100 p-8">
-        <DayPicker
-          mode="single"
-          selected={selectedDate}
-          onSelect={setSelectedDate}
-          showOutsideDays
-          components={customComponents}
-          classNames={{
-            months: "flex flex-col space-y-4",
-            month: "space-y-4",
-            month_caption: "flex justify-center pt-1 relative items-center mb-4",
-            caption_label: "text-base font-semibold text-indigo-900 mx-auto",
-            nav: "flex items-center absolute w-full justify-between left-0 right-0 px-2 pointer-events-none",
-            button_previous: "h-7 w-7 bg-transparent p-0 opacity-70 hover:opacity-100 transition-opacity pointer-events-auto text-indigo-700 flex items-center justify-center rounded-lg hover:bg-indigo-50",
-            button_next: "h-7 w-7 bg-transparent p-0 opacity-70 hover:opacity-100 transition-opacity pointer-events-auto text-indigo-700 flex items-center justify-center rounded-lg hover:bg-indigo-50",
-            weeks: "w-full border-collapse space-y-1",
-            weekdays: "flex justify-between",
-            weekday: "text-slate-400 w-11 font-normal text-[0.8rem] text-center uppercase tracking-wider",
-            week: "flex w-full mt-2 justify-between",
-            day: "p-0 relative text-center focus-within:relative focus-within:z-20",
-            selected: "bg-indigo-600 text-white rounded-xl font-semibold shadow-md shadow-indigo-200",
-            today: "border-2 border-indigo-600 font-bold text-indigo-700 rounded-xl",
-            outside: "text-slate-300 opacity-40 select-none pointer-events-none"
-          }}
-        />
+        {/* Calendar Core Card wrapper */}
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-100/70 border border-slate-100 p-6 flex justify-center">
+          <DayPicker
+            mode="single"
+            selected={selectedDate}
+            onSelect={setSelectedDate}
+            showOutsideDays
+            components={customComponents}
+            classNames={{
+              months: "flex flex-col space-y-4",
+              month: "space-y-4",
+              month_caption: "flex justify-center pt-2 relative items-center mb-2",
+              caption_label: "text-base font-bold text-slate-800 mx-auto tracking-wide",
+              nav: "flex items-center absolute w-full justify-between left-0 right-0 px-1 pointer-events-none",
+              button_previous: "h-8 w-8 bg-transparent p-0 opacity-60 hover:opacity-100 transition-all pointer-events-auto text-slate-700 flex items-center justify-center rounded-xl hover:bg-slate-100",
+              button_next: "h-8 w-8 bg-transparent p-0 opacity-60 hover:opacity-100 transition-all pointer-events-auto text-slate-700 flex items-center justify-center rounded-xl hover:bg-slate-100",
+              weeks: "w-full border-collapse space-y-1",
+              weekdays: "flex justify-between border-b border-slate-100/80 pb-2",
+              weekday: "text-slate-400 w-11 font-semibold text-[0.75rem] text-center uppercase tracking-widest first:text-rose-400/80 last:text-rose-400/80",
+              week: "flex w-full mt-1.5 justify-between",
+              day: "p-0 relative text-center focus-within:relative focus-within:z-20",
+              
+              // Custom matching selections matching images
+              selected: "shadow-lg shadow-indigo-100 font-bold rounded-xl",
+              today: "border-[2px] border-indigo-500 font-bold text-indigo-600 rounded-xl aria-selected:border-transparent",
+              outside: "text-slate-300 opacity-40 select-none pointer-events-none"
+            }}
+          />
+        </div>
       </div>
     </div>
   );

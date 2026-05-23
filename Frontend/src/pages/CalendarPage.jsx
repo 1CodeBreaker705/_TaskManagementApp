@@ -49,100 +49,90 @@ const CalendarPage = () => {
 
 
 
-  function DayContent({ date }) {
+  function DayContent(props) {
 
-    const data = dateMap[date.toDateString()] || {
-      due: 0,
-      overdue: 0
-    };
+  const date = props.date;
 
-    let tooltip = "No due tasks";
+  const data = dateMap[date.toDateString()] || {
+    due: 0,
+    overdue: 0
+  };
 
-    if(data.due > 0 && data.overdue > 0){
+  let tooltip = "No due tasks";
 
-      tooltip =
-      `${data.due} task${
-        data.due > 1 ? "s" : ""
-      } due • ${
-        data.overdue
-      } overdue task${
-        data.overdue > 1 ? "s" : ""
-      }`;
+  if(data.due > 0 && data.overdue > 0){
 
-    }
+    tooltip =
+    `${data.due} task${
+      data.due > 1 ? "s" : ""
+    } due • ${
+      data.overdue
+    } overdue task${
+      data.overdue > 1 ? "s" : ""
+    }`;
 
-    else if(data.overdue > 0){
+  }
 
-      tooltip =
-      `${data.overdue} overdue task${
-        data.overdue > 1 ? "s" : ""
-      }`;
+  else if(data.overdue > 0){
 
-    }
+    tooltip =
+    `${data.overdue} overdue task${
+      data.overdue > 1 ? "s" : ""
+    }`;
 
-    else if(data.due > 0){
+  }
 
-      tooltip =
-      `${data.due} task${
-        data.due > 1 ? "s" : ""
-      } due`;
+  else if(data.due > 0){
 
-    }
+    tooltip =
+    `${data.due} task${
+      data.due > 1 ? "s" : ""
+    } due`;
 
-    return (
+  }
+
+  return (
+
+    <div
+      title={tooltip}
+      className="
+      relative
+      w-full
+      h-full
+      flex
+      items-center
+      justify-center
+      "
+    >
+
+      <span>{date.getDate()}</span>
+
       <div
-        title={tooltip}
         className="
-        relative
+        absolute
+        left-1/2
+        -translate-x-1/2
+        bottom-[4px]
         flex
-        items-center
-        justify-center
-        w-full
-        h-full
+        gap-[2px]
+        z-[100]
         "
       >
 
-        <span>
-          {date.getDate()}
-        </span>
+        {data.due > 0 && (
+          <div className="w-2 h-2 rounded-full bg-emerald-500"/>
+        )}
 
-        <div
-          className="
-          absolute
-          bottom-1
-          flex
-          gap-1
-          "
-        >
-
-          {data.due > 0 && (
-            <div
-              className="
-              w-2
-              h-2
-              rounded-full
-              bg-emerald-500
-              "
-            />
-          )}
-
-          {data.overdue > 0 && (
-            <div
-              className="
-              w-2
-              h-2
-              rounded-full
-              bg-red-500
-              "
-            />
-          )}
-
-        </div>
+        {data.overdue > 0 && (
+          <div className="w-2 h-2 rounded-full bg-red-500"/>
+        )}
 
       </div>
-    );
-  }
 
+    </div>
+
+  );
+}
 
 
   return (
@@ -172,70 +162,65 @@ const CalendarPage = () => {
         "
       >
 
-        <DayPicker
-          mode="single"
-          selected={selectedDate}
-          onSelect={setSelectedDate}
-          showOutsideDays
-          components={{
-            DayContent
-          }}
-          classNames={{
-            months:
-            "flex",
+                <DayPicker
+                mode="single"
+                selected={selectedDate}
+                onSelect={setSelectedDate}
+                showOutsideDays
+                components={{
+                   DayContent 
+                }}
+                      classNames={{
 
-            month:
-            "space-y-4",
-
-            caption:
-            "flex justify-between items-center",
-
-            caption_label:
-            "text-lg font-bold text-indigo-700",
-
-            nav_button:
-            `
-            h-8
-            w-8
-            rounded-lg
-            hover:bg-indigo-100
-            transition
-            `,
-
-            head_cell:
-            `
-            text-sm
-            font-medium
-            text-slate-500
-            `,
-
-            day:
-            `
-            h-11
-            w-11
-            rounded-xl
-            hover:bg-indigo-50
-            transition
-            cursor-pointer
-            `,
-
-            selected:
-            `
-            bg-indigo-500
-            text-white
-            rounded-xl
-            `,
-
-            today:
-            `
-            border-2
-            border-indigo-600
-            text-indigo-700
-            font-bold
-            rounded-xl
-            `
-          }}
-        />
+                        months:"flex",
+                      
+                        month:"space-y-4",
+                      
+                        caption:
+                        "flex justify-between items-center",
+                      
+                        caption_label:
+                        "text-lg font-bold text-indigo-700",
+                      
+                        nav_button:
+                        "h-8 w-8 rounded-lg hover:bg-indigo-100",
+                      
+                        head_cell:
+                        "text-sm font-medium text-slate-500",
+                      
+                        day:
+                        "relative p-0 h-11 w-11",
+                      
+                        day_button:
+                        `
+                        w-11
+                        h-11
+                        rounded-xl
+                        transition
+                        hover:bg-indigo-50
+                        relative
+                        overflow-visible
+                        `,
+                      
+                        selected:
+                        `
+                        bg-indigo-500
+                        text-white
+                        `,
+                      
+                        today:
+                        `
+                        border-2
+                        border-indigo-600
+                        font-bold
+                        text-indigo-700
+                        `,
+                      
+                        outside:
+                        "text-slate-400"
+                      
+                      }}
+              />
 
       </div>
 

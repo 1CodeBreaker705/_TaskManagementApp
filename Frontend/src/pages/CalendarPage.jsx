@@ -7,10 +7,11 @@ const CalendarPage = () => {
   const { tasks } = useMainContext();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const today = useMemo(() => {
+  // 1. Fixed & stable primitive logic timestamp
+  const todayMidnightKey = useMemo(() => {
     const d = new Date();
     d.setHours(0, 0, 0, 0);
-    return d;
+    return d.getTime();
   }, []);
 
   const dateMap = useMemo(() => {
@@ -21,13 +22,15 @@ const CalendarPage = () => {
       .forEach((task) => {
         const due = new Date(task.dueDate);
         due.setHours(0, 0, 0, 0);
+        
         const key = due.toDateString();
+        const dueTime = due.getTime();
 
         if (!map[key]) {
           map[key] = { due: 0, overdue: 0 };
         }
 
-        if (due < today) {
+        if (dueTime < todayMidnightKey) {
           map[key].overdue++;
         } else {
           map[key].due++;
@@ -35,9 +38,9 @@ const CalendarPage = () => {
       });
 
     return map;
-  }, [tasks, today]);
+  }, [tasks, todayMidnightKey]);
 
-  // Handle custom data dots inside the DayButton wrapper
+  // 2. Custom DayButton component with fixed hover states
   const customComponents = useMemo(() => ({
     DayButton: ({ day, modifiers, children, ...props }) => {
       const dateKey = day.date.toDateString();
@@ -56,8 +59,11 @@ const CalendarPage = () => {
         <button 
           {...props} 
           title={tooltip} 
-          // Re-arranged and cleaned layout styling to make text and dots sit correctly
-          className="relative w-11 h-11 rounded-xl flex flex-col items-center justify-center transition-colors hover:bg-indigo-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 aria-selected:hover:bg-indigo-600"
+          /* 
+            FIX: Added text-slate-800, hover:text-indigo-900, and aria-selected:text-white 
+            to explicitly lock down the font colors during hover and selection states.
+          */
+          className="relative w-11 h-11 rounded-xl flex flex-col items-center justify-center transition-colors text-slate-800 hover:bg-indigo-50 hover:text-indigo-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 aria-selected:text-white aria-selected:hover:bg-indigo-600 aria-selected:hover:text-white"
         >
           <span className="text-sm font-medium">{children}</span>
           
@@ -87,7 +93,6 @@ const CalendarPage = () => {
           onSelect={setSelectedDate}
           showOutsideDays
           components={customComponents}
-          // v9 specific mapping strings applied below
           classNames={{
             months: "flex flex-col space-y-4",
             month: "space-y-4",
@@ -103,7 +108,7 @@ const CalendarPage = () => {
             day: "p-0 relative text-center focus-within:relative focus-within:z-20",
             selected: "bg-indigo-600 text-white rounded-xl font-semibold shadow-md shadow-indigo-200",
             today: "border-2 border-indigo-600 font-bold text-indigo-700 rounded-xl",
-            outside: "text-slate-300 opacity-50 select-none pointer-events-none"
+            outside: "text-slate-300 opacity-40 select-none pointer-events-none"
           }}
         />
       </div>

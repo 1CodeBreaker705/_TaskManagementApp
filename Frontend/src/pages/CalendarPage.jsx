@@ -53,34 +53,44 @@ const CalendarPage = () => {
 
             });
 
-            return (
+           return (
 
-              <div
-                title={
-                  hasOverdue
-                  ? `${dayTasks.length} overdue task${
-                      dayTasks.length!==1 ? "s" : ""
-                    } on this date`
-
-                  : `${dayTasks.length} task${
-                      dayTasks.length!==1 ? "s" : ""
-                    } due on this date`
-                }
-
-                className="flex justify-center mt-1"
-              >
-
-                <div
-                  className={`w-2 h-2 rounded-full ${
-                    hasOverdue
-                    ? "bg-red-500"
-                    : "bg-indigo-500"
-                  }`}
-                />
-
-              </div>
-
-            );
+                  <div className="group relative flex justify-center mt-1">
+                
+                    <div
+                      className={`w-2 h-2 rounded-full ${
+                        hasOverdue
+                        ? "bg-red-500"
+                        : "bg-emerald-500"
+                      }`}
+                    />
+                
+                    <div
+                      className="
+                      absolute bottom-5 opacity-0
+                      group-hover:opacity-100
+                      transition duration-150
+                      bg-gray-800 text-white
+                      text-xs px-2 py-1 rounded
+                      whitespace-nowrap
+                      pointer-events-none z-50
+                    "
+                    >
+                      {
+                        hasOverdue
+                        ? `${dayTasks.length} overdue task${
+                            dayTasks.length!==1 ? "s" : ""
+                          }`
+                
+                        : `${dayTasks.length} task${
+                            dayTasks.length!==1 ? "s" : ""
+                          } due`
+                      }
+                    </div>
+                
+                  </div>
+                
+                );
 
           }}
 

@@ -36,7 +36,6 @@ const preview = data.description
 // limit number of characters but keep line breaks
 const previewText = preview.split('\n').map(line => line.slice(0, 50)).join('\n');
 
-  
   const today = new Date();
   today.setHours(0,0,0,0);
   const due = data.dueDate ? new Date(data.dueDate) : null;

@@ -187,10 +187,22 @@ body {
 }
 
 /* Tooltip text */
-.calendar-due:hover::after{
-  content:"Tasks due on this date";
-}
-
+.calendar-due:hover::after,
 .calendar-overdue:hover::after{
-  content:"Overdue tasks on this date";
+  content:attr(data-tooltip);
+
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:100%;
+  margin-bottom:8px;
+
+  background:#1f2937;
+  color:white;
+  font-size:10px;
+  padding:4px 8px;
+  border-radius:6px;
+
+  white-space:nowrap;
+  z-index:100;
 }

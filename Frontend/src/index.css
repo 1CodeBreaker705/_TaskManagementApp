@@ -77,54 +77,67 @@ body {
 
 
 
-/* Main calendar container */
+/* Main calendar */
 .react-calendar{
-  width:100%;
+  width:500px;
+  max-width:100%;
   border:none;
-  border-radius:16px;
-  padding:20px;
+  border-radius:20px;
+  padding:25px;
   background:white;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  box-shadow:0 8px 25px rgba(79,70,229,.15);
 }
 
-/* Month navigation */
+/* Navigation */
+.react-calendar__navigation{
+  margin-bottom:20px;
+}
+
 .react-calendar__navigation button{
   color:#4f46e5;
   font-size:18px;
-  font-weight:600;
-  border-radius:10px;
+  font-weight:700;
+  border-radius:12px;
+  min-width:44px;
 }
 
 .react-calendar__navigation button:hover{
   background:#eef2ff;
 }
 
-/* Days */
-.react-calendar__tile{
-  padding:15px 8px;
-  border-radius:12px;
-  transition:0.3s;
+/* Week labels */
+.react-calendar__month-view__weekdays{
+  margin-bottom:10px;
 }
 
-/* Hover */
+.react-calendar__month-view__weekdays abbr{
+  text-decoration:none;
+  font-size:13px;
+  color:#6b7280;
+}
+
+/* Day tiles */
+.react-calendar__tile{
+  padding:18px 10px;
+  border-radius:14px;
+  font-size:15px;
+  transition:all .3s;
+}
+
 .react-calendar__tile:hover{
   background:#eef2ff;
+  transform:scale(1.05);
 }
 
-/* Current day */
+/* Today */
 .react-calendar__tile--now{
   background:#ddd6fe !important;
   color:#4f46e5;
-  border:2px solid #6366f1;
-  border-radius:12px;
-  font-weight:600;
+  font-weight:700;
 }
 
-/* Selected day */
+/* Selected */
 .react-calendar__tile--active{
   background:#4f46e5 !important;
   color:white !important;
-  border-radius:12px;
 }
-
-

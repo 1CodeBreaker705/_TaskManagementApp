@@ -49,9 +49,7 @@ const CalendarPage = () => {
 
 
 
-  function DayContent(props) {
-
-  const date = props.date;
+  function DayContent({date}) {
 
   const data = dateMap[date.toDateString()] || {
     due: 0,
@@ -168,7 +166,9 @@ const CalendarPage = () => {
                 onSelect={setSelectedDate}
                 showOutsideDays
                 components={{
-                   DayContent 
+                    Day: ({ day }) => (
+                      <DayContent date={day.date} />
+                    )
                 }}
                       classNames={{
 

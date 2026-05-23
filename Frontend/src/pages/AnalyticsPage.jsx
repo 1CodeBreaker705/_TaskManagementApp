@@ -19,17 +19,24 @@ const AnalyticsPage = () => {
   const professionalCount = tasks.filter((t) => t.category === "Professional").length;
   const healthCount = tasks.filter((t) => t.category === "Health").length;
   const personalCount = tasks.filter((t) => t.category === "Personal").length;
-  const socialCount = tasks.filter((t) => t.category === "social").length;
-  const othersCount = tasks.filter((t) => t.category === "others").length;
+  const socialCount = tasks.filter((t) => t.category === "Social").length;
+  const othersCount = tasks.filter((t) => t.category === "Others").length;
 
   //task completion rate
    const completionRate = tasks.length === 0 ? 0 : Math.round((completedCount / tasks.length) * 100);
   
   //overdue count
+  const today = new Date();
+  today.setHours(0,0,0,0);
   const overdueCount = tasks.filter(task => {
-  if (!task.dueDate) return false;
-  return new Date(task.dueDate) < new Date();
-}).length;
+    if (!task.dueDate) return false;
+    const due = new Date(task.dueDate);
+    due.setHours(0,0,0,0);
+    return (
+        due < today &&
+        task.status !== "Completed"
+     );
+   }).length;
 
   return (
     <div className="p-6 lg:p-12">

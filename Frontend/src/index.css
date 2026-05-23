@@ -75,3 +75,59 @@ body {
 }
 
 
+
+
+/* Main calendar container */
+.react-calendar{
+  width:100%;
+  border:none;
+  border-radius:16px;
+  padding:20px;
+  background:white;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Month navigation */
+.react-calendar__navigation button{
+  color:#4f46e5;
+  font-size:18px;
+  font-weight:600;
+  border-radius:10px;
+}
+
+.react-calendar__navigation button:hover{
+  background:#eef2ff;
+}
+
+/* Days */
+.react-calendar__tile{
+  padding:15px 8px;
+  border-radius:12px;
+  transition:0.3s;
+}
+
+/* Hover */
+.react-calendar__tile:hover{
+  background:#eef2ff;
+}
+
+/* Current day */
+.react-calendar__tile--now{
+  background:#ddd6fe !important;
+  color:#4f46e5;
+  border:2px solid #6366f1;
+  border-radius:12px;
+  font-weight:600;
+}
+
+/* Selected day */
+.react-calendar__tile--active{
+  background:#4f46e5 !important;
+  color:white !important;
+  border-radius:12px;
+}
+
+/* Weekend color */
+.react-calendar__month-view__days__day--weekend{
+  color:#ef4444;
+}

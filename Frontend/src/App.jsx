@@ -12,6 +12,7 @@ import AddTaskPage from "./pages/AddTaskPage";
 import LandingPage from "./pages/LandingPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import ScrollToTop from "./components/ScrollToTop"
+import CalendarPage from "./pages/CalendarPage";
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
              <Route path="/dashboard" Component={Dashboard}/>
              <Route path="/add-task" Component={AddTaskPage}/>
              <Route path="/analytics" Component={AnalyticsPage}/>
+             <Route path="/calendar" Component={CalendarPage}/>
           </Route>
           <Route path="/login" Component={LoginPage}/>
           <Route path="/register" Component={RegisterPage}/>

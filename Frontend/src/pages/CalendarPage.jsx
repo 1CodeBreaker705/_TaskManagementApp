@@ -55,7 +55,7 @@ const CalendarPage = () => {
 
            return (
 
-                      <div className="group relative flex justify-center mt-1">
+                      <div className="group relative flex justify-center mt-1 w-full h-4">
                                 
                                   <div
                                     className={`w-2 h-2 rounded-full ${

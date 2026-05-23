@@ -34,7 +34,7 @@ const TaskViewModal = ({id}) => {
     }
   }
 
-  async function open() {
+ function open() {
     setIsOpen(true)
     fetchData()
   }
@@ -52,13 +52,13 @@ const TaskViewModal = ({id}) => {
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-2xl rounded-xl bg-indigo-500 border border-gray-500 shadow-xl p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+              className="w-full max-w-[95vw] md:max-w-2xl rounded-xl bg-indigo-500 border border-gray-500 shadow-xl p-4 md:p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
             >
-              <DialogTitle as="div" className="text-base/7 font-medium text-white flex items-center justify-between">
+              <DialogTitle as="div" className="text-base/7 font-medium text-white flex items-center justify-between gap-2">
                 <h3 className='flex items-center justify-center gap-x-2 lg:gap-x-3 '>
                   <span className='text-xs lg:text-lg'>Task {isUpdating?'Edit':'Details'}</span>
                 </h3>
-                <button onClick={()=>setIsUpdating(!isUpdating)} title='update' className=' text-xs lg:text-lg flex items-center justify-center gap-x-2 mr-15 cursor-pointer border rounded px-1 ml-4 hover:bg-white hover:text-indigo-500 hover:shadow-md hover:border-white transition-all transform duration-300 hover:scale-105'>
+                <button onClick={()=>setIsUpdating(!isUpdating)} title='update' className=' text-xs lg:text-lg flex items-center justify-center gap-x-2 cursor-pointer border rounded px-1 ml-4 hover:bg-white hover:text-indigo-500 hover:shadow-md hover:border-white transition-all transform duration-300 hover:scale-105'>
                   <span className='text-xs lg:text-lg'>{isUpdating?'Show Details':'Update'}</span>{isUpdating?<FaEye/>:<CiEdit/>}
                 </button>
                 <button onClick={close} className='text-xl p-1 bg-white rounded-full text-black transform transition duration-300 hover:scale-110 hover:cursor-pointer'><IoMdClose/></button>

@@ -156,3 +156,8 @@ body {
 .react-calendar__month-view__days__day--weekend abbr{
   color:inherit !important;
 }
+
+/* Selected weekend should stay white */
+.react-calendar__tile--active.react-calendar__month-view__days__day--weekend abbr{
+  color:white !important;
+}

@@ -37,30 +37,30 @@ const AnalyticsPage = () => {
       <h1 className="text-2xl lg:text-4xl font-bold text-indigo-700 ">Analytics</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/*Task Status */}
-        <div className="bg-white shadow-lg rounded-2xl p-4 border-2 border-indigo-400">
-          <h2 className="font-semibold text-lg md:text-xl mb-3 text-indigo-500">Task Status</h2>
-          <p>Completed: <span className="font-bold md:text-xl text-indigo-500">{completedCount}</span></p>
-          <p>Active: <span className="font-bold md:text-xl text-indigo-500">{activeCount}</span></p>
-          <p>Pending: <span className="font-bold md:text-xl text-indigo-500">{pendingCount}</span></p>
+        <div className="bg-white shadow-lg rounded-2xl p-4 border-2 border-indigo-400 text-lg md:text-xl">
+          <h2 className="font-semibold  mb-3 text-indigo-500">Task Status</h2>
+          <p>Completed: <span className="font-bold text-indigo-500">{completedCount}</span></p>
+          <p>Active: <span className="font-bold text-indigo-500">{activeCount}</span></p>
+          <p>Pending: <span className="font-bold text-indigo-500">{pendingCount}</span></p>
         </div>
 
         {/* Priority */}
-        <div className="bg-white shadow-lg  rounded-2xl p-4 border-2 border-indigo-400">
-          <h2 className="font-semibold text-lg md:text-xl mb-3 text-indigo-500">Task Priority</h2>
-          <p>High: <span className="text-red-500 md:text-xl font-bold">{highPriority}</span></p>
-          <p>Medium: <span className="text-orange-500 md:text-xl font-bold">{mediumPriority}</span></p>
-          <p>Low: <span className="text-blue-500 md:text-xl font-bold">{lowPriority}</span></p>
+        <div className="bg-white shadow-lg  rounded-2xl p-4 border-2 border-indigo-400 text-lg md:text-xl">
+          <h2 className="font-semibold mb-3 text-indigo-500">Task Priority</h2>
+          <p>High: <span className="text-red-500 font-bold">{highPriority}</span></p>
+          <p>Medium: <span className="text-orange-500 font-bold">{mediumPriority}</span></p>
+          <p>Low: <span className="text-blue-500 font-bold">{lowPriority}</span></p>
         </div>
 
         {/* Categories */}
-        <div className="bg-white shadow-lg rounded-2xl p-4 border-2 border-indigo-400">
-          <h2 className="font-semibold text-lg md:text-xl mb-3 text-indigo-500">Task Categories</h2>
-          <p>Study: <span className="font-bold md:text-xl text-blue-400">{studyCount}</span></p>
-          <p>Professional: <span className="font-bold md:text-xl text-green-400">{professionalCount}</span></p>
-          <p>Health: <span className="font-bold md:text-xl text-red-400">{healthCount}</span></p>
-          <p>Personal: <span className="font-bold md:text-xl text-yellow-400">{personalCount}</span></p>
-          <p>Social: <span className="font-bold md:text-xl text-pink-400">{socialCount}</span></p>
-          <p>Others: <span className="font-bold md:text-xl text-gray-400">{othersCount}</span></p>
+        <div className="bg-white shadow-lg rounded-2xl p-4 border-2 border-indigo-400 text-lg md:text-xl">
+          <h2 className="font-semibold mb-3 text-indigo-500">Task Categories</h2>
+          <p>Study: <span className="font-bold text-blue-400">{studyCount}</span></p>
+          <p>Professional: <span className="font-bold text-green-400">{professionalCount}</span></p>
+          <p>Health: <span className="font-bold text-red-400">{healthCount}</span></p>
+          <p>Personal: <span className="font-bold text-yellow-400">{personalCount}</span></p>
+          <p>Social: <span className="font-bold text-pink-400">{socialCount}</span></p>
+          <p>Others: <span className="font-bold text-gray-400">{othersCount}</span></p>
         </div>
         
           {/* OverDue */}

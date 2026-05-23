@@ -127,7 +127,4 @@ body {
   border-radius:12px;
 }
 
-/* Weekend color */
-.react-calendar__month-view__days__day--weekend{
-  color:#ef4444;
-}
+

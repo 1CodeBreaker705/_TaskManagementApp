@@ -58,7 +58,7 @@ const TaskViewModal = ({id}) => {
                 <h3 className='flex items-center justify-center gap-x-2 lg:gap-x-3 '>
                   <span className='text-xs lg:text-lg'>Task {isUpdating?'Edit':'Details'}</span>
                 </h3>
-                <button onClick={()=>setIsUpdating(!isUpdating)} title='update' className=' text-xs lg:text-lg flex items-center justify-center gap-x-2 cursor-pointer border rounded px-1 ml-4 hover:bg-white hover:text-indigo-500 hover:shadow-md hover:border-white transition-all transform duration-300 hover:scale-105'>
+                <button onClick={()=>setIsUpdating(!isUpdating)} title='update' className=' text-xs lg:text-lg flex items-center justify-center gap-x-2 md:mr-15 cursor-pointer border rounded px-1 ml-4 hover:bg-white hover:text-indigo-500 hover:shadow-md hover:border-white transition-all transform duration-300 hover:scale-105'>
                   <span className='text-xs lg:text-lg'>{isUpdating?'Show Details':'Update'}</span>{isUpdating?<FaEye/>:<CiEdit/>}
                 </button>
                 <button onClick={close} className='text-xl p-1 bg-white rounded-full text-black transform transition duration-300 hover:scale-110 hover:cursor-pointer'><IoMdClose/></button>

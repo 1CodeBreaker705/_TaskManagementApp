@@ -32,6 +32,12 @@ const Dashboard = () => {
   }
 });
 
+  useEffect(() => {
+    Aos.init({
+      once: true
+    })
+  },[]);
+
   // ✅ Reminder Toast (due today)only once per user session
  useEffect(() => {
   const shownToday = sessionStorage.getItem("shownToday");

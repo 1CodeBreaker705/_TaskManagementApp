@@ -141,3 +141,11 @@ body {
   background:#4f46e5 !important;
   color:white !important;
 }
+
+.react-calendar__month-view__days__day--weekend{
+  color: inherit !important;
+}
+
+.react-calendar__month-view__days__day--weekend abbr{
+  color: inherit !important;
+}

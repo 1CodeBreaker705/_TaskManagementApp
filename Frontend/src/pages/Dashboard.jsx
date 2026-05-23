@@ -10,6 +10,7 @@ const Dashboard = () => {
   const [search,setSearch]=useState('')
   const [priorityFilter, setPriorityFilter] = useState('All'); // All, High, Medium, Low
   const [statusFilter, setStatusFilter] = useState('All'); // All, Completed, Active, Pending
+  const [categoryFilter, setCategoryFilter] = useState("All"); 
   const [sortOrder, setSortOrder] = useState('Newest'); 
 
   const filterResults = tasks
@@ -18,7 +19,8 @@ const Dashboard = () => {
     const matchesSearch = task.title.toLowerCase().includes(x) || task.description.toLowerCase().includes(x);
     const matchesPriority = priorityFilter === 'All' || task.priority === priorityFilter;
     const matchesStatus = statusFilter === 'All' || task.status === statusFilter;
-    return matchesSearch && matchesPriority && matchesStatus;
+    const matchesCategory = categoryFilter === "All" || task.category === categoryFilter;
+    return matchesSearch && matchesPriority && matchesStatus && matchesCategory;
   })
   .sort((a, b) => {
   if (sortOrder === 'Newest') return new Date(b.createdAt) - new Date(a.createdAt);
@@ -107,6 +109,21 @@ const Dashboard = () => {
           <option value="Completed">Completed</option>
           <option value="Active">Active</option>
           <option value="Pending">Pending</option>
+        </select>
+
+         {/* Category Filter */}
+         <select
+          value={categoryFilter}
+          onChange={(e)=>setCategoryFilter(e.target.value)}
+          className="py-2 px-3 bg-white border-gray-200 outline-none rounded-xl shadow-md border-2 hover:border-indigo-400 hover:shadow-indigo-200 transition-all duration-200 hover:cursor-pointer"
+        >
+          <option value="All">All Categories</option>
+          <option value="Study">Study</option>
+          <option value="Professional">Professional</option>
+          <option value="Health">Health</option>
+          <option value="Personal">Personal</option>
+          <option value="Social">Social</option>
+          <option value="Others">Others</option>
         </select>
             
       </div>

@@ -39,42 +39,45 @@ const CalendarPage = () => {
               return due < today && task.status !== "Completed";
             });
           
-            return hasOverdue
-                    ? `calendar-overdue overdue-${dayTasks.length}`
-                    : `calendar-due due-${dayTasks.length}`;
+                  return hasOverdue
+                      ? `calendar-overdue`
+                      : `calendar-due`;
           }}
 
-          tileContent={({date})=>{
+          tileContent={({date}) => {
 
-            const dayTasks = tasks.filter(task=>{
-
-              if(!task.dueDate) return false;
-
+              const dayTasks = tasks.filter(task => {
+                if(!task.dueDate) return false;
+            
+                return (
+                  new Date(task.dueDate).toDateString() ===
+                  date.toDateString()
+                );
+              });
+            
+              if(dayTasks.length===0) return null;
+            
+              const hasOverdue = dayTasks.some(task => {
+                const due = new Date(task.dueDate);
+                due.setHours(0,0,0,0);
+            
+                return due < today &&
+                       task.status !== "Completed";
+              });
+            
               return (
-                new Date(task.dueDate).toDateString() ===
-                date.toDateString()
-              );
-
-            });
-
-            if(dayTasks.length===0) return null;
-
-            const hasOverdue = dayTasks.some(task=>{
-
-              const due = new Date(task.dueDate);
-
-              due.setHours(0,0,0,0);
-
-              return (
-                due < today &&
-                task.status !== "Completed"
-              );
-
-            });
-
-           return (
-                                               
-                <div className="flex justify-center mt-1">
+                <div
+                  data-tooltip={
+                    hasOverdue
+                      ? `${dayTasks.length} overdue task${
+                          dayTasks.length!==1 ? "s" : ""
+                        }`
+                      : `${dayTasks.length} task${
+                          dayTasks.length!==1 ? "s" : ""
+                        } due`
+                  }
+                  className="flex justify-center mt-1"
+                >
                   <div
                     className={`w-2 h-2 rounded-full ${
                       hasOverdue
@@ -83,10 +86,9 @@ const CalendarPage = () => {
                     }`}
                   />
                 </div>
-                
-                );
+              );
+            }}
 
-          }}
 
         />
 

@@ -122,7 +122,7 @@ const CalendarPage = () => {
               month: "space-y-4 w-full",
               month_caption: "flex justify-center pt-2 relative items-center mb-2",
               caption_label: "text-sm sm:text-base font-bold text-slate-800 mx-auto tracking-wide",
-              nav: "absolute top-4 left-4 right-4 flex items-center justify-between w-[calc(100%-2rem)] h-8 pointer-events-none z-20",
+              nav: "absolute top-0 left-4 right-4 flex items-center justify-between w-[calc(100%-2rem)] h-8 pointer-events-none z-20",
               button_previous: "h-8 w-8 bg-transparent p-0 opacity-60 hover:opacity-100 transition-all pointer-events-auto text-slate-700 flex items-center justify-center rounded-xl hover:bg-slate-100 relative z-20 cursor-pointer",
               button_next: "h-8 w-8 bg-transparent p-0 opacity-60 hover:opacity-100 transition-all pointer-events-auto text-slate-700 flex items-center justify-center rounded-xl hover:bg-slate-100 relative z-20 cursor-pointer",
               weeks: "w-full border-collapse space-y-1",

@@ -64,7 +64,7 @@ const LandingPage = () => {
           <div className="bg-white rounded shadow p-6 flex flex-col items-center text-center hover:scale-105 transform transition">
             <FaTasks className="text-indigo-600 text-5xl mb-4"/>
             <h3 className="font-semibold text-xl mb-2">Task Management</h3>
-            <p>Feature rich modern web app with multiple task categories to choose from, priority management, task completion status, powerful all-in-one dashboard, rich-text support, task CRUD support, task creation and deadline date tracking support.</p>
+            <p>Feature-rich modern web app with multiple task categories to choose from, priority management, task completion status, powerful all-in-one dashboard, rich-text support, task CRUD support, task creation and deadline date tracking support.</p>
           </div>
           <div className="bg-white rounded shadow p-6 flex flex-col items-center text-center hover:scale-105 transform transition">
             <FaRegChartBar className="text-indigo-600 text-5xl mb-4"/>

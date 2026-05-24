@@ -41,7 +41,7 @@ const AnalyticsPage = () => {
   return (
     <div className="p-6 lg:p-12">
       <div className="flex flex-col gap-10">
-      <h1 className="text-2xl lg:text-4xl font-bold text-indigo-700 ">Analytics</h1>
+      <h1 className="text-2xl lg:text-4xl font-bold text-slate-900 ">Analytics</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/*Task Status */}
         <div className="bg-white shadow-lg rounded-2xl p-4 border-2 border-indigo-400 text-lg md:text-xl">

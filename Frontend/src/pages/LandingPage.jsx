@@ -22,7 +22,7 @@ const LandingPage = () => {
             Create, organize, and track your tasks by category, priority and status, with powerful search, dynamic filtering, analytics and calendar — all in one place.
           </p>
           <p className="mb-6 text-lg lg:text-xl text-indigo-100">
-            Taskin makes professional and personal daily task management so easy with rich text support, smooth modern UI, personal dashboard and many features
+            Taskin makes professional and personal daily task management easy with rich text support, clean modern UI, personal dashboard and smart features.
           </p>
           <div className="flex gap-4">
              {!isLoggedIn ? (

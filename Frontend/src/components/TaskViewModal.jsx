@@ -41,6 +41,7 @@ const TaskViewModal = ({id}) => {
 
   function close() {
     setIsOpen(false)
+    setIsUpdating(false)
   }
 
   return (

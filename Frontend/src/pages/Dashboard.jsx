@@ -149,7 +149,7 @@ const Dashboard = () => {
                   <h1 className='text-center text-2xl lg:text-3xl font-black'>No Tasks Yet 📝</h1>
                   <Link
                       to="/add-task"
-                      className="md:hidden inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded-lg transition-all active:scale-95"
+                      className="md:hidden mt-4 bg-indigo-600 text-white px-2 py-1 rounded-lg transition-all active:scale-95"
                     >
                       + Add Task
                   </Link>

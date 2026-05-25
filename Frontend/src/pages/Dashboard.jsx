@@ -145,7 +145,7 @@ const Dashboard = () => {
               }):
               <>
                 <div className="col-span-3 text-center">
-                  <h1 className='text-center text-2xl lg:text-3xl font-black'>No Tasks📝 Use + Add Task Page</h1>
+                  <h1 className='text-center text-2xl lg:text-3xl font-black'>No Tasks Yet 📝</h1>
                 </div>
               </>
        }

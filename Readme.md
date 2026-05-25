@@ -53,7 +53,7 @@ Get a complete overview of productivity with:
 ### 🔐 Authentication
 - User registration and login
 - Multi-user support
-- Secure authentication system
+- JWT-Based Secure authentication system
 
 ---
 

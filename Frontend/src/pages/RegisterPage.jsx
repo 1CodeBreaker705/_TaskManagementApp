@@ -24,7 +24,7 @@ const RegisterPage = () => {
        const response=await axiosClient.post('/register',values)
        const data=response.data
        toast.success(data.message)
-       localStorage.setItem("user",data.token)
+       localStorage.setItem("token",data.token)
        helpers.resetForm()
        await fetchProfile()
        navigate("/dashboard")

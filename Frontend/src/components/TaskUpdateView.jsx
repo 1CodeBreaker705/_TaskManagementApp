@@ -41,9 +41,9 @@ const TaskUpdateView = ({data,fetchData,close}) => {
         setLoading(true)
       
         const response=await axiosClient.put('/task/'+data._id,values,{
-          headers:{
-            user:localStorage.getItem('user') || ''
-          }
+            headers:{
+               Authorization:`Bearer ${localStorage.getItem('token') || ''}`
+            }
         })
         const res=response.data
         toast.success(res.message)

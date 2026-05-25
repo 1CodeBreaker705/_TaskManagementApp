@@ -18,9 +18,9 @@ const TaskView = ({data,close}) => {
             setLoading(true)
           
             const response=await axiosClient.delete('/task/'+data._id,{
-              headers:{
-                user:localStorage.getItem('user') || ''
-              }
+                headers:{
+                  Authorization:`Bearer ${localStorage.getItem('token') || ''}`
+                }
             })
 
             const res=response.data

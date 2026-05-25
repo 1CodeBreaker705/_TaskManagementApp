@@ -1,4 +1,4 @@
-require("dotenv").config({ path: ".env" });
+require("dotenv").config();
 require("colors")
 const app=require("./src/app")
 const {ConnectDB}=require("./src/db.config")

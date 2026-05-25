@@ -41,9 +41,9 @@ const AddTaskPage = () => {
         setLoading(true)
       
         const response=await axiosClient.post('/add-task',values,{
-          headers:{
-            user:localStorage.getItem('user') || ''
-          }
+            headers:{
+               Authorization:`Bearer ${localStorage.getItem('token') || ''}`
+            }
         })
         const data=response.data
         toast.success(data.message)

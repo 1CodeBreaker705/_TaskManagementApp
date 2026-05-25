@@ -20,9 +20,9 @@ const TaskViewModal = ({id}) => {
     try {
       setLoading(true)
       const response= await axiosClient.get('/task/'+id,{
-        headers:{
-          user:localStorage.getItem('user') || ''
-        }
+          headers:{
+            Authorization:`Bearer ${localStorage.getItem('token') || ''}`
+          }
       })
       const data=response.data
       setTask(data)

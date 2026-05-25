@@ -1,9 +1,9 @@
 const express=require("express")
 const { UserModel } = require("./models/user.model")
 const router=express.Router()
-const mongoose=require('mongoose')
 const { TaskModel } = require("./models/task.model")
 const bcrypt = require('bcrypt');
+const jwt=require("jsonwebtoken")
 
 
 //ping route for uptime robot to check server is up or not
@@ -33,7 +33,7 @@ router.route('/register')
       throw new Error("Enter Password")
     }
 
-    const userExists=await UserModel.findOne({email})
+    const userExists=await UserModel.findOne({email:email})
 
     if(userExists){
       throw new Error("Account Already Exists")
@@ -49,7 +49,13 @@ router.route('/register')
        password: hashedPassword, // store hashed password
     })
 
-   res.status(201).send({message:"User Registration Successful",token:user._id})
+    const token=jwt.sign(
+      {id:user._id},
+      process.env.JWT_SECRET,
+      {expiresIn:"7d"}
+    )
+
+   res.status(201).send({message:"User Registration Successful",token})
 
   } catch (error) {
     res.status(400).send({error:error.message})
@@ -74,7 +80,7 @@ router.route('/login')
       throw new Error("Enter Password")
     }
 
-    const userExists=await UserModel.findOne({email})
+    const userExists=await UserModel.findOne({email:email})
 
     if(!userExists){
       throw new Error("Email Not Found")
@@ -84,30 +90,46 @@ router.route('/login')
     const isMatch = await bcrypt.compare(password, userExists.password);
     if (!isMatch) throw new Error("Wrong Password Entered");
 
-   res.status(200).send({message:"Login Successful",token:userExists._id})
+    const token=jwt.sign(
+      {id:userExists._id},
+      process.env.JWT_SECRET,
+      {expiresIn:"7d"}
+    )
+
+   res.status(200).send({message:"Login Successful",token})
 
   } catch (error) {
     res.status(400).send({error:error.message})
   }
 })
 
+//middleware
 router.use((req,res,next)=>{
-  try {
+ try{
 
-   const token=req.headers['user']
-   if(!token){
-    throw new Error("User Profile Not Found Login First")
+   const authHeader=req.headers.authorization
+
+   if(!authHeader){
+      throw new Error("Login First")
    }
 
-   if(!mongoose.isValidObjectId(token)){
-    throw new Error("Enter Valid UserId")
-   }
-   req.user=token
-   
-   next() 
-  } catch (error) {
-    res.status(400).json({error:error.message})
-  }
+   const token=authHeader.split(" ")[1]
+
+   const decoded=jwt.verify(
+      token,
+      process.env.JWT_SECRET
+   )
+
+   req.user=decoded.id
+
+   next()
+
+ }
+ catch(error){
+   res.status(401).send({
+      error:"Invalid Token"
+   })
+ }
 })
 
 //profile
@@ -183,7 +205,12 @@ router.route('/all-tasks')
 router.route('/task/:id')
 .get(async(req,res)=>{
   try {
-    const task= await TaskModel.findById(req.params.id)
+    const task= await TaskModel.findOne({_id:req.params.id,user:req.user})
+    
+    if(!task){
+      throw new Error("Task Not Found")
+    }
+
     res.status(200).send(task)
     
   } catch (error) {
@@ -192,8 +219,7 @@ router.route('/task/:id')
 })
 .put(async(req,res)=>{
   try {
-    const id=req.params.id
-
+    
     const {title,description,category,status,dueDate,priority}=req.body
      
       if(!title){
@@ -212,7 +238,7 @@ router.route('/task/:id')
         throw new Error("Priority is Required")
       }
 
-      await TaskModel.findByIdAndUpdate(id,{
+      const task = await TaskModel.findOneAndUpdate({_id:req.params.id,user:req.user},{
         title,
         description,
         category,
@@ -220,6 +246,10 @@ router.route('/task/:id')
         dueDate,
         priority
       })
+
+      if(!task){
+        throw new Error("Task Not Found")
+      }
 
       return res.status(200).send({message:"Task Updated"})
     
@@ -229,7 +259,7 @@ router.route('/task/:id')
 })
 .delete(async(req,res)=>{
   try {
-    const task = await TaskModel.findByIdAndDelete(req.params.id)
+    const task = await TaskModel.findOneAndDelete({_id:req.params.id,user:req.user})
     if(!task){
       throw new Error("Task Not Found")
     }

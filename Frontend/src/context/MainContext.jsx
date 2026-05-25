@@ -16,10 +16,11 @@ export const MainContextProvider = ({children}) => {
   const navigate=useNavigate();
 
   const logoutHandler=()=>{
-    localStorage.removeItem("user")
-    toast.success("Logout Sucessfully")
-    navigate("/")
+    localStorage.removeItem("token")
     setUser(null)
+    setTasks([])
+    toast.success("Logout Successfully")
+    navigate("/")
   }
 
   const fetchAllTasks=async()=>{
@@ -27,7 +28,7 @@ export const MainContextProvider = ({children}) => {
 
       const response=await axiosClient.get('all-tasks',{
         headers:{
-          user:localStorage.getItem('user')
+          Authorization:`Bearer ${localStorage.getItem('token')}`
         }
       })
       const data=response.data
@@ -43,7 +44,7 @@ export const MainContextProvider = ({children}) => {
       
       setLoading(true)
 
-      const token=localStorage.getItem('user');
+      const token=localStorage.getItem('token');
 
       if(!token){
         setUser(null); // mark as logged out
@@ -51,9 +52,9 @@ export const MainContextProvider = ({children}) => {
       }
       
       const response = await axiosClient.get("/profile",{
-        headers:{
-          user:token
-        }
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
       })
 
       const data=response.data
@@ -62,6 +63,7 @@ export const MainContextProvider = ({children}) => {
       await fetchAllTasks()
 
     } catch (error) {
+        localStorage.removeItem("token")
         setUser(null)
     }finally{
       setLoading(false)

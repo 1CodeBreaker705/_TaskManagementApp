@@ -75,5 +75,5 @@ body {
 }
 
 [data-aos]:not(.aos-animate) {
-  opacity: 0.40 !important;
+  opacity: 0.45 !important;
 }

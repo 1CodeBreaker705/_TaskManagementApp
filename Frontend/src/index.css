@@ -74,4 +74,13 @@ body {
   list-style-type: decimal !important;
 }
 
+[data-aos] {
+  opacity: 0.35;
+  transform: translateY(20px);
+  transition-property: transform, opacity;
+}
 
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -74,7 +74,6 @@ body {
   list-style-type: decimal !important;
 }
 
-[data-aos="fade-right"]:not(.aos-animate) {
+[data-aos]:not(.aos-animate) {
   opacity: 0.35 !important;
-  transform: translate3d(20px, 0, 0) !important;
 }

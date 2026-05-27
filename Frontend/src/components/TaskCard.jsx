@@ -46,7 +46,7 @@ const previewText = preview.split('\n').map(line => line.slice(0, 50)).join('\n'
 
   return (
     <>
-    <div data-aos="zoom-in" >
+    <div data-aos="zoom-out" >
       <div className=" w-full flex flex-col lg:min-h-[270px] bg-white rounded shadow-md py-2 px-3 lg:py-3 lg:px-4 transform transition-all duration-[390ms] ease-in-out hover:scale-105 hover:shadow-xs hover:-translate-y-1 border hover:shadow-indigo-300  border-gray-400 hover:border-indigo-700"  >
         <div className="flex justify-between text-xs lg:text-sm mb-2 text-gray-500">
           <span>Created: {new Date(data.createdAt).toLocaleDateString()}</span>

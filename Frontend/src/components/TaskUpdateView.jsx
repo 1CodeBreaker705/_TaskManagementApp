@@ -66,7 +66,7 @@ const TaskUpdateView = ({data,fetchData,close}) => {
      onSubmit={onSubmitHandler}
      >
     {({values,setFieldValue})=>(
-      <Form className=' bg-gray-100 mx-auto  px-3 rounded-lg'>
+      <Form className=' bg-white mx-auto  px-3 rounded-lg'>
         <div className='py-10 px-2'>
           <div className='mb-3'>
               <label htmlFor="">Due Date (Optional)</label>

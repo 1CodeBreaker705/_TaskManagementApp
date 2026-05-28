@@ -64,7 +64,7 @@ const TaskView = ({data,close}) => {
                   </div>
           </div>
           <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center">  
-          <button onClick={deleteHandler} disabled={loading} className='text-xs lg:text-base flex items-center justify-center gap-x-1 lg:gap-x-2 bg-red-500/10 text-red-500 border border-red-200 disabled:bg-red-600 text-white px-1 lg:px-2 py-1 rounded-lg shadow cursor-pointer transform transition duration-300 hover:bg-red-500 hover:border-red-500 hover:scale-[1.02]' >Delete{loading?<CgSpinner className='text-xs lg:text-xl animate-spin'/>:<FaTrash className='text-sm lg:text-base'/>}</button>
+          <button onClick={deleteHandler} disabled={loading} className='text-xs lg:text-base flex items-center justify-center gap-x-1 lg:gap-x-2 bg-red-500/10 text-red-500 border border-red-200 disabled:bg-red-100 disabled:text-red-300 px-1 lg:px-2 py-1 rounded-lg shadow cursor-pointer transition duration-300 hover:bg-red-500 hover:border-red-500 hover:scale-[1.02]' >Delete{loading?<CgSpinner className='text-xs lg:text-xl animate-spin'/>:<FaTrash className='text-sm lg:text-base'/>}</button>
           </div>
         </div>
     </>

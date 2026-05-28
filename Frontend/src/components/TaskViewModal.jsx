@@ -46,30 +46,30 @@ const TaskViewModal = ({id}) => {
 
   return (
     <>
-    <button onClick={open} className='px-3 py-1 text-white bg-indigo-500 rounded-full flex items-center justify-center gap-x-1 cursor-pointer border border-transparent hover:bg-indigo-100 hover:text-indigo-500 hover:border-indigo-500 transition-all transform duration-300 hover:scale-105'>View<span><IoMdOpen></IoMdOpen></span></button>
+    <button onClick={open} className='px-3 py-1 text-white bg-indigo-500 rounded-full flex items-center justify-center gap-x-1 cursor-pointer border border-transparent hover:bg-indigo-100 hover:text-indigo-500 hover:border-indigo-500 transition-all duration-300 hover:scale-[1.02]'>View<span><IoMdOpen></IoMdOpen></span></button>
      <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none " onClose={close}>
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-[4px] z-10" />
+      <div className="fixed inset-0 bg-black/45 backdrop-blur-[4px] z-10" />
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-[95vw] md:max-w-2xl rounded-xl bg-indigo-500 border border-gray-500 shadow-xl p-4 md:p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+              className="w-full max-w-[95vw] md:max-w-2xl rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 border border-white/20 shadow-2xl p-4 md:p-6 backdrop-blur-xl duration-300 ease-out data-closed:scale-95 data-closed:opacity-0"
             >
               <DialogTitle as="div" className="text-base/7 font-medium text-white flex items-center justify-between gap-2">
                 <h3 className='flex items-center justify-center gap-x-2 lg:gap-x-3 '>
                   <span className='text-xs lg:text-lg'>Task {isUpdating?'Edit':'Details'}</span>
                 </h3>
-                <button onClick={()=>setIsUpdating(!isUpdating)} title='update' className=' text-xs lg:text-lg flex items-center justify-center gap-x-2 md:mr-15 cursor-pointer border rounded px-1 ml-4 hover:bg-white hover:text-indigo-500 hover:shadow-md hover:border-white transition-all transform duration-300 hover:scale-105'>
+                <button onClick={()=>setIsUpdating(!isUpdating)} title='update' className=' text-xs lg:text-base flex items-center justify-center gap-x-2 md:mr-15 cursor-pointer border border-white/30 rounded-lg px-3 py-1.5 ml-4 bg-white/10 text-white hover:bg-white hover:text-indigo-500 hover:border-white transition-all duration-300 hover:scale-[1.02]'>
                   <span className='text-xs lg:text-lg'>{isUpdating?'Show Details':'Update'}</span>{isUpdating?<FaEye/>:<CiEdit/>}
                 </button>
-                <button onClick={close} className='text-xl p-1 bg-white rounded-full text-black transform transition duration-300 hover:scale-110 hover:cursor-pointer'><IoMdClose/></button>
+                <button onClick={close} className='text-xl p-1 bg-white/95 rounded-full text-gray-700 shadow-sm transition duration-300 hover:scale-105 hover:cursor-pointer'><IoMdClose/></button>
               </DialogTitle>
               {loading?<>
                <div className=' w-full min-h-[40vh] flex items-center justify-center'>
                  <LoaderComponent/>
                </div>
               </>:
-              <section className='w-full min-h-[40vh] bg-gray-100 rounded-2xl p-2 py-4 mt-3'>
+              <section className='w-full min-h-[40vh] bg-white rounded-2xl p-2 py-4 mt-3'>
                 {isUpdating?<TaskUpdateView data={task} fetchData={fetchData} close={close} />:<TaskView data={task} close={close} />}
               </section>  }
             </DialogPanel>

@@ -59,7 +59,7 @@ const previewText = preview.split('\n').map(line => line.slice(0, 50)).join('\n'
           <span className=' px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-xs lg:text-sm font-medium bg-gray-100 text-gray-700 border border-gray-300 shadow-sm'>{data.status}</span>
           <TaskViewModal id={data._id}/>
         </div>
-        <div className={`${getPriorityClass(data.priority)} text-center rounded mt-4 text-xs lg:text-sm  `}>Priority: {data.priority}</div>
+        <div className={`${getPriorityClass(data.priority)} text-center rounded mt-4 text-xs lg:text-sm  `}>{data.priority}</div>
       </div>
      </div>
     </>

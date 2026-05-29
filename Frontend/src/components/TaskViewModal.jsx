@@ -46,7 +46,7 @@ const TaskViewModal = ({id}) => {
 
   return (
     <>
-    <button onClick={open} className='px-3 py-1 text-white bg-indigo-500 rounded-full flex items-center justify-center gap-x-1 cursor-pointer border border-transparent hover:bg-indigo-100 hover:text-indigo-500 hover:border-indigo-500 transition-all duration-300 hover:scale-[1.02]'>View<span><IoMdOpen></IoMdOpen></span></button>
+    <button onClick={open} className='px-3 py-1 text-white bg-indigo-500 rounded-full flex items-center justify-center gap-x-1 cursor-pointer border border-transparent hover:bg-indigo-100 hover:text-indigo-500 hover:border-indigo-500 transition-all duration-300 hover:scale-[1.02]'>View</button>
      <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none " onClose={close}>
       <div className="fixed inset-0 bg-black/45 backdrop-blur-[4px] z-10" />
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">

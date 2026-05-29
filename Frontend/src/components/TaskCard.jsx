@@ -47,12 +47,12 @@ const previewText = preview.split('\n').map(line => line.slice(0, 50)).join('\n'
   return (
     <>
     <div data-aos="fade-right" >
-      <div className=" w-full flex flex-col lg:min-h-[270px] bg-white rounded shadow-md py-2 px-3 lg:py-3 lg:px-4 transform transition-all duration-[390ms] ease-in-out hover:scale-105 hover:shadow-xs hover:-translate-y-1 border hover:shadow-indigo-300  border-zinc-300 hover:border-indigo-400"  >
+      <div className=" w-full flex flex-col lg:min-h-[270px] bg-white rounded shadow-md py-2 px-3 lg:py-3 lg:px-4 transform transition-all duration-[390ms] ease-in-out  hover:-translate-y-1 border border-zinc-300 hover:shadow-lg hover:shadow-indigo-200 hover:scale-[1.02]">
         <div className="flex justify-between text-xs lg:text-sm mb-2 text-gray-500">
           <span>Created: {new Date(data.createdAt).toLocaleDateString()}</span>
           {data.dueDate && <span className={ isOverdue ? "text-red-500 " : "text-indigo-500 " } >Due: {new Date(data.dueDate).toLocaleDateString()}</span>}
         </div>
-        <p className="truncate text-sm lg:text-xl font-bold mb-2">{data.title}</p>
+        <p className="line-clamp-2 text-sm lg:text-xl font-bold mb-2">{data.title}</p>
         <p className="font-normal text-xs lg:text-lg text-zinc-400 py-2 bg-gray-100 rounded-2xl px-3 mb-2 whitespace-pre-line max-h-23 overflow-hidden"> 
           {previewText}
       </p>

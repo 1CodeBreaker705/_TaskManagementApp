@@ -10,6 +10,19 @@ import { useMainContext } from '../context/MainContext'
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ["bold", "italic", "underline"],
+
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ indent: "-1" }, { indent: "+1" }],
+
+    ["link"],
+    ["clean"],
+  ],
+};
+
 const AddTaskPage = () => {
 
   const navigate=useNavigate()
@@ -80,7 +93,7 @@ const AddTaskPage = () => {
          </div>
          <div className="mb-3">
             <label htmlFor="">Description</label>
-            <ReactQuill theme="snow" value={values.description} onChange={(val) => setFieldValue("description", val)} className="border rounded bg-white"/>
+            <ReactQuill modules={modules} theme="snow" value={values.description} onChange={(val) => setFieldValue("description", val)} placeholder="Describe your task..." className="border rounded bg-white"/>
             <ErrorMessage name="description" component="p" className="text-red-500 text-sm" />
         </div>
          <div className='mb-3'>

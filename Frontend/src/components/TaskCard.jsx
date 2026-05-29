@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import { taskCategories } from '../utils/constant';
 import TaskViewModal from './TaskViewModal';
-import Aos from "aos";
-import 'aos/dist/aos.css'; 
 
 const TaskCard = ({data}) => {
   

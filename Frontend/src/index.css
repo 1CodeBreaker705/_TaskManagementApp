@@ -7,6 +7,10 @@ body {
   color: #010203;
 }
 
+.ql-editor {
+  min-height: 200px;
+}
+
 .quill-content {
   color: #52525b; /* text-zinc-700 */
   font-weight: 500; /* semi-bold */

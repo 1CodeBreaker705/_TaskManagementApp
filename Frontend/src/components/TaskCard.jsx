@@ -51,9 +51,10 @@ const previewText = preview.split('\n').map(line => line.slice(0, 50)).join('\n'
           {data.dueDate && <span className={ isOverdue ? "text-red-500 " : "text-indigo-500 " } >Due: {new Date(data.dueDate).toLocaleDateString()}</span>}
         </div>
         <p className="line-clamp-2 break-words text-sm lg:text-xl font-bold mb-2">{data.title}</p>
+       {previewText && ( 
         <p className="font-normal text-xs lg:text-lg text-zinc-400 py-2 bg-gray-100 rounded-2xl px-3 mb-2 whitespace-pre-line max-h-23 overflow-hidden"> 
           {previewText}
-      </p>
+      </p>)}
         <div className='mt-auto pt-1 lg:pt-3 flex justify-between items-center text-xs lg:text-lg'>
           <span className={categoryClass}>{data.category}</span>
           <span className=' px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-xs lg:text-sm font-medium bg-gray-100 text-gray-700 border border-gray-300 shadow-sm'>{data.status}</span>

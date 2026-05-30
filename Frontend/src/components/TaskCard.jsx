@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { taskCategories } from '../utils/constant';
 import TaskViewModal from './TaskViewModal';
 

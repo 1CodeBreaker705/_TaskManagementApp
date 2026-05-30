@@ -8,7 +8,6 @@ import { axiosClient } from '../utils/axiosClient'
 import { useNavigate } from 'react-router-dom'
 import { useMainContext } from '../context/MainContext'
 import ReactQuill from "react-quill-new";
-import "react-quill-new/dist/quill.snow.css";
 
 const AddTaskPage = () => {
 
@@ -16,7 +15,7 @@ const AddTaskPage = () => {
   const {fetchAllTasks}=useMainContext()
   const [loading,setLoading]=useState(false)
 
-  const catogories=Object.keys(taskCategories)
+  const categories=Object.keys(taskCategories)
   
   const initialValues={
       title:"",
@@ -29,7 +28,7 @@ const AddTaskPage = () => {
   
   const validationSchema=yup.object({
       title:yup.string().required("Title is required"),
-      description:yup.string().required("Description is required"),
+      description: yup.string().test("not-empty","Description is required",value => value && value.replace(/<[^>]*>/g, "").trim().length > 0)
       category:yup.string().required("Category is required").oneOf(catogories,"Choose valid category"),
       status:yup.string().required("Status is required").oneOf(statusList,"Choose valid status"),
       dueDate: yup.date().nullable().transform((curr, orig) => (orig === "" ? null : curr)).typeError("Invalid date"),
@@ -51,7 +50,7 @@ const AddTaskPage = () => {
         navigate('/dashboard')
         helpers.resetForm()
       } catch (error) {
-        toast.error(error.response.data.error || error.message)
+        toast.error(error?.response?.data?.error || error.message)
       }finally{
          setLoading(false)
       }
@@ -88,7 +87,7 @@ const AddTaskPage = () => {
           <Field name='category' as='select' className="w-full py-3 px-4 border rounded">
                <option value="">-----select-----</option>
                {
-                catogories.map((cur,i)=>{
+                categories.map((cur,i)=>{
                   return <option key={i} value={cur}>{cur}</option>
                 })
                }

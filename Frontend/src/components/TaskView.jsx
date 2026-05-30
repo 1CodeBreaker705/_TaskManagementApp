@@ -37,7 +37,7 @@ const TaskView = ({data,close}) => {
 
   return (
     <>
-        <div className='relative min-h-[40vh] px-3 py-2 pb-16'>
+        <div className='relative min-h-[40vh] px-2 md:px-3 py-2 pb-16'>
           <div className="pb-12">
             <h3 className=' text-lg lg:text-2xl font-semibold text-gray-900 mb-5 leading-tight w-full break-words'>{data.title}</h3>
             <div className="quill-content ql-editor mb-8 w-full text-gray-700 leading-7 lg:px-1 tracking-[0.01em]" dangerouslySetInnerHTML={{ __html: data.description }}></div>

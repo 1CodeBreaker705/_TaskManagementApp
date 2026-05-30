@@ -34,8 +34,6 @@ const preview = data.description
   .replace(/\n\s*\n/g, '\n') // (Optional) Clean up multiple blank lines caused by adjacent block elements
   .trim();
 
-  const previewText = preview;
-
   const today = new Date();
   today.setHours(0,0,0,0);
   const due = data.dueDate ? new Date(data.dueDate) : null;
@@ -53,9 +51,9 @@ const preview = data.description
           {data.dueDate && <span className={ isOverdue ? "text-red-500 " : "text-indigo-500 " } >Due: {new Date(data.dueDate).toLocaleDateString()}</span>}
         </div>
         <p className="line-clamp-2 break-words text-sm lg:text-xl font-bold mb-2">{data.title}</p>
-       {previewText && ( 
+       {preview && ( 
         <p className="font-normal text-xs lg:text-lg text-zinc-400 py-2 bg-gray-100 rounded-2xl px-3 mb-2 max-h-16 md:max-h-20 overflow-hidden whitespace-pre-line"> 
-          {previewText}
+          {preview}
       </p>)}
         <div className='mt-auto pt-1 lg:pt-3 flex justify-between items-center text-xs lg:text-lg'>
           <span className={categoryClass}>{data.category}</span>

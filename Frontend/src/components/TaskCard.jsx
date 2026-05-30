@@ -19,16 +19,19 @@ const TaskCard = ({data}) => {
   }
 }
 
- // convert HTML to plain text with bullets
+// convert HTML to plain text with bullets
 const preview = data.description
-  .replace(/<li>/gi, '• ')   // bullet
+  .replace(/<li[^>]*>/gi, '• ')   // match <li> even with classes/attributes
   .replace(/<\/li>/gi, '\n') // new line after item
-  .replace(/<ul>/gi, '\n')   // new line before list
+  .replace(/<ul[^>]*>/gi, '\n')   // new line before list
   .replace(/<\/ul>/gi, '\n') // new line after list
+  .replace(/<ol[^>]*>/gi, '\n')   // ordered lists
+  .replace(/<\/ol>/gi, '\n') 
   .replace(/<br\s*\/?>/gi, '\n') // line breaks
-  .replace(/<p>/gi, '\n')
-  .replace(/<\/p>/gi, '\n')
-  .replace(/<[^>]+>/g, '')  // remove other HTML tags
+  .replace(/<p[^>]*>/gi, '') // usually <p> adds too many breaks, strip opening
+  .replace(/<\/p>/gi, '\n')  // and just add a newline at the end
+  .replace(/<[^>]+>/g, '')  // remove all other remaining HTML tags
+  .replace(/\n\s*\n/g, '\n') // (Optional) Clean up multiple blank lines caused by adjacent block elements
   .trim();
 
 // limit number of characters but keep line breaks

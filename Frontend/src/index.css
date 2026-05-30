@@ -20,6 +20,12 @@ body {
   overflow-wrap: break-word;
 }
 
+@media (max-width: 767px) {
+  .quill-content {
+    font-weight: 400;
+  }
+}
+
 .quill-content h1 { font-size: 1.5rem; font-weight: bold; margin: 0.5rem 0; }
 .quill-content h2 { font-size: 1.25rem; font-weight: bold; margin: 0.5rem 0; }
 .quill-content h3 { font-size: 1.125rem; font-weight: 600; margin: 0.5rem 0; }

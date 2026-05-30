@@ -28,7 +28,7 @@ const AddTaskPage = () => {
   
   const validationSchema=yup.object({
       title:yup.string().required("Title is required"),
-      description: yup.string().test("not-empty","Description is required",value => value && value.replace(/<[^>]*>/g, "").trim().length > 0)
+      description: yup.string().test("not-empty","Description is required",value => value && value.replace(/<[^>]*>/g, "").trim().length > 0),
       category:yup.string().required("Category is required").oneOf(catogories,"Choose valid category"),
       status:yup.string().required("Status is required").oneOf(statusList,"Choose valid status"),
       dueDate: yup.date().nullable().transform((curr, orig) => (orig === "" ? null : curr)).typeError("Invalid date"),

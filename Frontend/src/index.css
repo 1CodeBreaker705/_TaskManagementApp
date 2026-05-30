@@ -24,21 +24,35 @@ body {
 .quill-content h2 { font-size: 1.25rem; font-weight: bold; margin: 0.5rem 0; }
 .quill-content h3 { font-size: 1.125rem; font-weight: 600; margin: 0.5rem 0; }
 
-.quill-content ol {
-  list-style-type: decimal !important;
-  margin-left: 1.5rem;
-  padding-left: 1rem;
+/* --- Base List Layout Updates --- */
+.quill-content ol, 
+.quill-content ul {
+  list-style-type: none; /* Let the <li> selectors safely manage styling */
+  padding-left: 0;
+  margin-left: 0;
   margin-bottom: 0.5rem;
   max-width: 100%;
 }
 
-.quill-content ul {
+/* Ensure default lists still get standard bullets/numbers */
+.quill-content ul li {
   list-style-type: disc !important;
   margin-left: 1.5rem;
-  padding-left: 1rem;
-  margin-bottom: 0.5rem;
-  max-width: 100%;
 }
+
+.quill-content ol li {
+  list-style-type: decimal !important;
+  margin-left: 1.5rem;
+}
+
+/* --- Quill Indentation Handling --- */
+/* This loops through the indent classes that Quill assigns to deep elements */
+.quill-content .ql-indent-1 { padding-left: 2rem; }
+.quill-content .ql-indent-2 { padding-left: 4rem; }
+.quill-content .ql-indent-3 { padding-left: 6rem; }
+.quill-content .ql-indent-4 { padding-left: 8rem; }
+.quill-content .ql-indent-5 { padding-left: 10rem; }
+
 
 .quill-content blockquote {
   border-left: 4px solid #ccc;
@@ -55,13 +69,6 @@ body {
   margin: 0.5rem 0;
 }
 
-.quill-content li[data-list="bullet"] {
-  list-style-type: disc !important;
-}
-
-.quill-content li[data-list="ordered"] {
-  list-style-type: decimal !important;
-}
 
 [data-aos]:not(.aos-animate) {
   opacity: 0.45 !important;

@@ -52,7 +52,7 @@ const previewText = preview.split('\n').map(line => line.slice(0, 50)).join('\n'
         </div>
         <p className="line-clamp-2 break-words text-sm lg:text-xl font-bold mb-2">{data.title}</p>
        {previewText && ( 
-        <p className="font-normal text-xs lg:text-lg text-zinc-400 py-2 bg-gray-100 rounded-2xl px-3 mb-2 line-clamp-2"> 
+        <p className="font-normal text-xs lg:text-lg text-zinc-400 py-2 bg-gray-100 rounded-2xl px-3 mb-2 line-clamp-2 whitespace-pre-line"> 
           {previewText}
       </p>)}
         <div className='mt-auto pt-1 lg:pt-3 flex justify-between items-center text-xs lg:text-lg'>

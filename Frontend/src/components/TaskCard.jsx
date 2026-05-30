@@ -34,6 +34,8 @@ const preview = data.description
   .replace(/\n\s*\n/g, '\n') // (Optional) Clean up multiple blank lines caused by adjacent block elements
   .trim();
 
+  const previewText = preview;
+
   const today = new Date();
   today.setHours(0,0,0,0);
   const due = data.dueDate ? new Date(data.dueDate) : null;

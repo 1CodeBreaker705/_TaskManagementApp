@@ -1,10 +1,10 @@
 export const taskCategories = {
-  "Study": " px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-blue-100 text-blue-600 rounded-full border border-blue-300",
-  "Professional":" px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-green-100 text-green-600 rounded-full border border-green-300",
-  "Health": " px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-red-100 text-red-600 rounded-full border border-red-300",
-  "Personal": "px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-yellow-100 text-yellow-600 rounded-full border border-yellow-300",
-  "Social": "px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-pink-100 text-pink-600 rounded-full border border-pink-300",
-  "Others": "px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-300"
+  "Study": " px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-blue-100 text-blue-500 rounded-full border border-blue-400",
+  "Professional":" px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-green-100 text-green-500 rounded-full border border-green-400",
+  "Health": " px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-red-100 text-red-500 rounded-full border border-red-400",
+  "Personal": "px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-yellow-100 text-yellow-600 rounded-full border border-yellow-400",
+  "Social": "px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-pink-100 text-pink-500 rounded-full border border-pink-400",
+  "Others": "px-2 text-sm lg:text-base lg:px-3 lg:py-1 bg-gray-100 text-gray-500 rounded-full border border-gray-400"
 }
 
 export const statusList=['Pending','Active','Completed']

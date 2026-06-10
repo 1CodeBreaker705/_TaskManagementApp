@@ -55,7 +55,7 @@ const TaskViewModal = ({id}) => {
               transition
               className="w-full max-w-[95vw] md:max-w-2xl rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-400 border border-white/20 shadow-2xl p-2 md:p-2 backdrop-blur-xl duration-300 ease-out data-closed:scale-95 data-closed:opacity-0"
             >
-              <DialogTitle as="div" className="text-base/7 font-medium text-white flex items-center justify-between gap-2">
+              <DialogTitle as="div" className="text-base/7 font-medium text-white/70 flex items-center justify-between gap-2">
                 <h3 className='flex items-center justify-center gap-x-2 lg:gap-x-3 '>
                   <span className='text-xs lg:text-lg'>Task {isUpdating?'Edit':'Details'}</span>
                 </h3>

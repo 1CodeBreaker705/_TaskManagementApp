@@ -2,7 +2,7 @@ import React,{ useState } from 'react'
 import { IoMdClose} from "react-icons/io";
 import { CiEdit } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
-import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import TaskUpdateView from './TaskUpdateView';
 import TaskView from './TaskView';
 import { toast } from 'react-toastify';

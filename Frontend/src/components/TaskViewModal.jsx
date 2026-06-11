@@ -48,7 +48,7 @@ const TaskViewModal = ({id}) => {
     <>
     <button onClick={open} className='px-3 py-1 rounded-full bg-indigo-400 text-white shadow-sm cursor-pointer hover:bg-indigo-500 hover:shadow-md hover:shadow-indigo-100 transition-all duration-300'>View</button>
      <Dialog open={isOpen} as="div" className="relative z-50 focus:outline-none " onClose={close}>
-      <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-10" />
+      <div className="fixed inset-0 bg-black/65 backdrop-blur-md z-10" />
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
